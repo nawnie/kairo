@@ -21,6 +21,9 @@ unsupervised real-program operation, all of these gates must pass:
 5. Require human review before increasing action scope, persistence, duration,
    permissions, or moving to a new domain. A passing benchmark never grants
    unsupervised authority by itself.
+6. Treat contradictory repeated observations as a hard refusal condition. Do
+   not average, smooth, or train through environmental drift unless a separate
+   noise model has passed its own independent validation.
 
 Until these gates are implemented and independently verified for a real
 program test, Kairo remains in the bounded local research lane.
