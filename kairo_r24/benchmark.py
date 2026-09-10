@@ -13,7 +13,7 @@ from .backend import SQLiteTools,explore,inspect_artifact
 
 def frozen(root,data):
     load=lambda name:json.loads((data/name).read_text());freeze=load('FREEZE.json')
-    assert sha(root/freeze['protocol_file'])==freeze['protocol_sha256']
+    assert sha(root/'R24_PROTOCOL.md')==freeze['protocol_sha256']
     assert all(sha(data/name)==value for name,value in freeze['files'].items())
     assert all(sha(root/name)==value for name,value in freeze['sources'].items())
     return data,load
