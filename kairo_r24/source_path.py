@@ -262,6 +262,36 @@ def function_relationship(program_path, symbol, direction):
     return {"status": "abstain", "reason": "function_relationship_ambiguous", "answer": None, "evidence": []}
 
 
+def function_path(program_path, source_name, target_name):
+    root = Path(program_path).expanduser().resolve()
+    graph = {}
+    evidence = {}
+    for path in _files(root):
+        if path.suffix.lower() != ".py":
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        try:
+            tree = ast.parse(text, filename=str(path))
+        except SyntaxError:
+            continue
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                graph[node.name] = [call.func.id for call in ast.walk(node) if isinstance(call, ast.Call) and isinstance(call.func, ast.Name)]
+                evidence[node.name] = SourceEvidence(str(path), node.lineno, f"def {node.name}(...)")
+    queue = [(source_name, [source_name])]
+    seen = {source_name}
+    while queue:
+        current, path = queue.pop(0)
+        if current == target_name:
+            return {"status": "answered", "answer": " -> ".join(path),
+                    "evidence": [evidence[name].as_dict() for name in path if name in evidence]}
+        for child in graph.get(current, []):
+            if child not in seen and child in graph:
+                seen.add(child)
+                queue.append((child, path + [child]))
+    return {"status": "abstain", "reason": "no_call_path_found", "answer": None, "evidence": []}
+
+
 def find_text(program_path, term):
     root = Path(program_path).expanduser().resolve()
     if not root.exists():

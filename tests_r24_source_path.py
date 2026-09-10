@@ -68,6 +68,15 @@ class SourcePathTests(unittest.TestCase):
             self.assertIn("helper", calls["answer"])
             self.assertIn("run", callers["answer"])
 
+    def test_questioner_answers_bounded_call_path(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "tool.py").write_text("def save():\n    pass\n\ndef convert():\n    return save()\n\ndef run():\n    return convert()\n", encoding="utf-8")
+            questioner = Questioner(root, {})
+            result = questioner.ask("how does the function run reach the function save?")
+            self.assertEqual(result["status"], "answered")
+            self.assertEqual(result["answer"], "run -> convert -> save")
+
     def test_questioner_answers_function_parameters(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

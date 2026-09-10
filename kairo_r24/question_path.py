@@ -12,7 +12,7 @@ from pathlib import Path
 from .path_learn import learn_path
 from .path_program import PathProgram
 from kairo_r11.model import Model
-from .source_path import capability, dependencies, entrypoints, find_symbol, find_text, function_relationship, search_question, summarize_function, summarize_path
+from .source_path import capability, dependencies, entrypoints, find_symbol, find_text, function_path, function_relationship, search_question, summarize_function, summarize_path
 
 
 def _plan(question, alphabet):
@@ -85,6 +85,9 @@ class Questioner:
         callers_match = re.search(r"\bwho calls (?:the )?function\s+([A-Za-z_]\w*)\b", question, re.IGNORECASE)
         if callers_match:
             return function_relationship(self.program_path, callers_match.group(1), "callers")
+        path_match = re.search(r"\bhow does (?:the )?function\s+([A-Za-z_]\w*)\s+reach (?:the )?function\s+([A-Za-z_]\w*)\b", question, re.IGNORECASE)
+        if path_match:
+            return function_path(self.program_path, path_match.group(1), path_match.group(2))
         symbol_match = re.search(r"\bwhere is (?:the )?(?:function|class)\s+([A-Za-z_]\w*)\s+defined\b", question, re.IGNORECASE) or re.search(r"\bwhere is (?:the )?([A-Za-z_]\w*)\s+defined\b", question, re.IGNORECASE)
         if symbol_match:
             return find_symbol(self.program_path, symbol_match.group(1))
