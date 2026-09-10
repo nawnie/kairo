@@ -3,7 +3,9 @@ from __future__ import annotations
 
 import ast
 from dataclasses import dataclass
+import json
 from pathlib import Path
+import tomllib
 
 
 @dataclass(frozen=True)
@@ -66,6 +68,8 @@ def summarize_path(program_path):
     evidence = []
     descriptions = []
     docs = []
+    entrypoints = []
+    metadata = []
     for path in files:
         relative = path.name if root.is_file() else str(path.relative_to(root))
         if path.suffix.lower() in {".md", ".txt", ".rst"} and path.name.lower() in {"readme.md", "readme.txt", "readme.rst", "description.md"}:
@@ -79,6 +83,31 @@ def summarize_path(program_path):
             evidence.extend(items)
             if docstring:
                 descriptions.append(docstring.splitlines()[0])
+            if path.name in {"main.py", "__main__.py", "cli.py"}:
+                entrypoints.append(str(path))
+        elif path.name == "pyproject.toml":
+            try:
+                config = tomllib.loads(path.read_text(encoding="utf-8", errors="replace"))
+                project = config.get("project", {})
+                if project.get("name"):
+                    metadata.append(f"Python package: {project['name']}")
+                if project.get("description"):
+                    metadata.append(str(project["description"]))
+                if project.get("scripts"):
+                    metadata.append("declares command-line scripts: " + ", ".join(sorted(project["scripts"])))
+            except (tomllib.TOMLDecodeError, OSError):
+                pass
+        elif path.name == "package.json":
+            try:
+                package = json.loads(path.read_text(encoding="utf-8", errors="replace"))
+                if package.get("name"):
+                    metadata.append(f"Node package: {package['name']}")
+                if package.get("description"):
+                    metadata.append(str(package["description"]))
+                if package.get("scripts"):
+                    metadata.append("declares scripts: " + ", ".join(sorted(package["scripts"])))
+            except (json.JSONDecodeError, OSError):
+                pass
     if not files:
         return {"status": "abstain", "reason": "no_readable_files", "answer": None, "evidence": []}
     parts = []
@@ -86,6 +115,10 @@ def summarize_path(program_path):
         parts.append("Project documentation says: " + " ".join(docs[:3]))
     if descriptions:
         parts.append("Python module descriptions: " + " ".join(descriptions[:5]))
+    if metadata:
+        parts.append("Package metadata: " + " ".join(metadata[:4]))
+    if entrypoints:
+        parts.append("Likely entry-point files include: " + ", ".join(entrypoints[:8]))
     python_count = sum(path.suffix.lower() == ".py" for path in files)
     if python_count:
         parts.append(f"The supplied location contains {python_count} Python source file(s) summarized by their imports, classes, and functions.")

@@ -58,6 +58,16 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["matches"], 2)
             self.assertTrue(all(item["path"].endswith("tool.py") for item in result["evidence"]))
 
+    def test_program_summary_includes_metadata_and_entrypoint(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "pyproject.toml").write_text('[project]\nname = "demo-tool"\ndescription = "Processes reports."\n[project.scripts]\ndemo = "main:run"\n', encoding="utf-8")
+            (root / "main.py").write_text("def run():\n    pass\n", encoding="utf-8")
+            result = summarize_path(root)
+            self.assertIn("demo-tool", result["answer"])
+            self.assertIn("Processes reports", result["answer"])
+            self.assertIn("main.py", result["answer"])
+
 
 if __name__ == "__main__":
     unittest.main()
