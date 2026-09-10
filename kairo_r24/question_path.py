@@ -12,7 +12,7 @@ from pathlib import Path
 from .path_learn import learn_path
 from .path_program import PathProgram
 from kairo_r11.model import Model
-from .source_path import find_symbol, find_text, summarize_function, summarize_path
+from .source_path import capability, find_symbol, find_text, summarize_function, summarize_path
 
 
 def _plan(question, alphabet):
@@ -82,6 +82,10 @@ class Questioner:
         text_match = re.search(r"\b(?:which files|where) (?:mention|contain)\s+['\"]?([^'\"?]+?)['\"]?\s*\??$", question, re.IGNORECASE)
         if text_match:
             return find_text(self.program_path, text_match.group(1).strip())
+        capability_match = re.search(r"\bdoes (?:this )?program use (?:the )?(network|files?|database|processes?)\b", question, re.IGNORECASE)
+        if capability_match:
+            name = capability_match.group(1).lower().rstrip("s")
+            return capability(self.program_path, {"file": "file", "database": "database", "network": "network", "processe": "process"}.get(name, name))
         if re.search(r"\bwhat does (this )?(program|project|code) do\b", question.lower()):
             return summarize_path(self.program_path)
         plan = _plan(question, self.alphabet)

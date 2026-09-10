@@ -76,6 +76,16 @@ class SourcePathTests(unittest.TestCase):
             self.assertIn("open", result["answer"])
             self.assertIn("__main__", " ".join(item["text"] for item in result["evidence"]))
 
+    def test_questioner_answers_source_capability(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.py").write_text("import socket\n\ndef run():\n    return socket.socket()\n", encoding="utf-8")
+            questioner = Questioner(root, {})
+            result = questioner.ask("does this program use the network?")
+            self.assertEqual(result["status"], "answered")
+            self.assertEqual(result["answer"], "yes")
+            self.assertGreater(result["matches"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

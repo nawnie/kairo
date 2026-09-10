@@ -229,3 +229,30 @@ def find_text(program_path, term):
         return {"status": "abstain", "reason": "text_not_found", "answer": None, "evidence": []}
     return {"status": "answered", "answer": f"Found {len(matches)} matching line(s) for {term!r}.",
             "evidence": [item.as_dict() for item in matches[:40]], "matches": len(matches)}
+
+
+def capability(program_path, name):
+    groups = {
+        "network": {"requests", "urllib", "http", "socket", "urlopen", "websocket"},
+        "file": {"open", "pathlib", "shutil", "os", "glob"},
+        "database": {"sqlite", "sqlalchemy", "psycopg", "mysql", "connect"},
+        "process": {"subprocess", "popen", "system", "os.system"},
+    }
+    terms = groups.get(name.lower())
+    if not terms:
+        return {"status": "abstain", "reason": "unsupported_capability", "answer": None, "evidence": []}
+    root = Path(program_path).expanduser().resolve()
+    matches = []
+    for path in _files(root):
+        try:
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError:
+            continue
+        for number, line in enumerate(lines, 1):
+            lowered = line.lower()
+            if any(term in lowered for term in terms):
+                matches.append(SourceEvidence(str(path), number, line.strip()))
+    answer = "yes" if matches else "no"
+    return {"status": "answered", "answer": answer,
+            "scope": "static source indicators only; does not prove runtime activity",
+            "evidence": [item.as_dict() for item in matches[:40]], "matches": len(matches)}
