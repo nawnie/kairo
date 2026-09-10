@@ -113,3 +113,9 @@ from comments and string literals. Its import/require path is now guarded by
 comment removal and outside-string token checks; regression coverage confirms
 that fake text is ignored while real `import` and `require` dependencies are
 retained.
+
+The Python operation probe then found that a user-defined bare `connect()` was
+being mislabeled as a database operation. Bare-name inference is now limited
+to built-in `open`; database, process, and network operations require imported
+or qualified source evidence. Function-level operation names follow the same
+rule.

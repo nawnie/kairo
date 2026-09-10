@@ -157,6 +157,16 @@ class SourcePathTests(unittest.TestCase):
             result = summarize_path(root)
             self.assertNotIn("operations:", " ".join(item["text"] for item in result["evidence"]))
 
+    def test_generic_python_function_names_are_not_reported_as_operations(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.py").write_text(
+                "def connect():\n    return 1\n\ndef run():\n    return connect()\n",
+                encoding="utf-8",
+            )
+            result = summarize_path(root)
+            self.assertNotIn("operations:", " ".join(item["text"] for item in result["evidence"]))
+
     def test_program_summary_resolves_import_aliases(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

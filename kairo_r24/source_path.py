@@ -67,7 +67,7 @@ def _python_summary(path: Path):
 
 
 def _python_operations(tree):
-    direct = {"open", "connect", "urlopen", "Popen", "system", "loads", "dumps"}
+    direct = {"open"}
     qualified = {
         ("subprocess", "run"): "subprocess.run (processes commands)",
         ("subprocess", "Popen"): "subprocess.Popen (starts processes)",
@@ -240,7 +240,7 @@ def summarize_function(program_path, function_name):
                 parameters = [arg.arg for arg in node.args.args]
                 calls = sorted({call.func.id for call in ast.walk(node)
                                 if isinstance(call, ast.Call) and isinstance(call.func, ast.Name)})
-                operation_names = {"open", "connect", "urlopen", "Popen", "run", "system", "unlink", "remove", "write_text", "write_bytes"}
+                operation_names = {"open", "unlink", "remove", "write_text", "write_bytes"}
                 operations = sorted(set(calls) & operation_names)
                 operations = sorted(set(operations) | set(_python_operations(node)))
                 returns = [ast.get_source_segment(source, item.value) for item in ast.walk(node)
