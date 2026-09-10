@@ -240,6 +240,18 @@ class SourcePathTests(unittest.TestCase):
             self.assertIn("authentication", result["answer"])
             self.assertTrue(any("authenticate" in item["text"] for item in result["evidence"]))
 
+    def test_unsupported_predicate_question_abstains_with_evidence(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "README.md").write_text("This is a secure-looking demo for discussion only.\n", encoding="utf-8")
+            (root / "main.py").write_text("def run(value):\n    return value\n", encoding="utf-8")
+            result = Questioner(root, {}).ask("is this program secure?")
+            self.assertEqual(result["status"], "abstain")
+            self.assertEqual(result["reason"], "requires_semantic_source_analysis")
+            self.assertIsNone(result["answer"])
+            self.assertGreater(result["matches"], 0)
+            self.assertTrue(result["evidence"])
+
     def test_program_summary_reads_mixed_language_structure(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

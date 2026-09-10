@@ -73,3 +73,15 @@ documentation and comments are excluded, while real imports and calls remain
 evidence. The repaired probe reports `no` with zero matches.
 
 Regression verification: 37 R24/path tests passed and 12 R23 tests passed.
+
+## Unsupported-predicate checkpoint
+
+A third adversarial probe asked whether a trivial program was secure while the
+only matching evidence was a README phrase saying it was “secure-looking.” The
+old open-ended fallback returned an `answered` result based on that word, which
+was not a security analysis. The fallback now abstains on unsupported yes/no,
+causal, and modal predicates while preserving the ranked evidence for a later
+semantic analyzer. Explicit capability handlers remain available for questions
+they can actually ground, such as whether source imports a network library.
+
+Regression verification: pending after this repair.

@@ -387,6 +387,14 @@ def search_question(program_path, question):
     if not scored:
         return {"status": "abstain", "reason": "no_relevant_source_evidence", "answer": None, "evidence": []}
     evidence = [item.as_dict() for _, item in scored[:20]]
+    if re.match(r"^\s*(is|are|does|do|did|will|can|could|should|why)\b", question, re.IGNORECASE):
+        return {
+            "status": "abstain",
+            "reason": "requires_semantic_source_analysis",
+            "answer": None,
+            "evidence": evidence,
+            "matches": len(scored),
+        }
     return {"status": "answered", "answer": f"Relevant source evidence found for: {', '.join(terms)}.", "evidence": evidence, "matches": len(scored)}
 
 
