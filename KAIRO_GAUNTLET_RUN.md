@@ -37,3 +37,16 @@ re-baselined before using the old clean-reproduction result as a fresh pass.
 
 The next executable gate should be a hidden late-state adapter, followed by a
 noise/failure adapter and then a genuinely cross-domain transfer run.
+
+## First adversarial probes
+
+The hidden late-state probe passed: a flip/read adapter changed from `early` to
+`late` after repeated flips, and Kairo answered the eight-flip question
+correctly. Its learning status remained provisional after 128 bounded probes.
+
+The conflicting-documentation probe failed as expected. A directory README
+claimed that a program encrypted files, while the Python source called
+`Path.unlink()` and deleted a file. Kairo answered with the README's encryption
+claim, did not report the deletion operation, and mislabeled the function name
+`run` as an operation. This is a false-supported source-summary result and is
+the first concrete gauntlet failure requiring repair before broader claims.
