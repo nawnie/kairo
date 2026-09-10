@@ -58,6 +58,16 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["matches"], 2)
             self.assertTrue(all(item["path"].endswith("tool.py") for item in result["evidence"]))
 
+    def test_questioner_answers_function_relationships(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "tool.py").write_text("def helper():\n    pass\n\ndef run():\n    return helper()\n", encoding="utf-8")
+            questioner = Questioner(root, {})
+            calls = questioner.ask("what does the function run call?")
+            callers = questioner.ask("who calls the function helper?")
+            self.assertIn("helper", calls["answer"])
+            self.assertIn("run", callers["answer"])
+
     def test_program_summary_includes_metadata_and_entrypoint(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

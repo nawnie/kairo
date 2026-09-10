@@ -227,6 +227,35 @@ def find_symbol(program_path, symbol):
     return {"status": "abstain", "reason": "symbol_not_found", "answer": None, "evidence": []}
 
 
+def function_relationship(program_path, symbol, direction):
+    root = Path(program_path).expanduser().resolve()
+    relationships = []
+    for path in _files(root):
+        if path.suffix.lower() != ".py":
+            continue
+        source = path.read_text(encoding="utf-8", errors="replace")
+        try:
+            tree = ast.parse(source, filename=str(path))
+        except SyntaxError:
+            continue
+        for node in ast.walk(tree):
+            if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                continue
+            calls = [call.func.id for call in ast.walk(node) if isinstance(call, ast.Call) and isinstance(call.func, ast.Name)]
+            if direction == "calls" and node.name == symbol:
+                relationships.append((node.name, calls, SourceEvidence(str(path), node.lineno, f"def {node.name}(...)") ))
+            elif direction == "callers" and symbol in calls:
+                relationships.append((node.name, [symbol], SourceEvidence(str(path), node.lineno, f"def {node.name}(...)") ))
+    if len(relationships) == 1 or (relationships and direction == "callers"):
+        names = sorted(set(name for _, calls, _ in relationships for name in calls)) if direction == "calls" else sorted(set(name for name, _, _ in relationships))
+        evidence = [item.as_dict() for _, _, item in relationships]
+        label = "calls" if direction == "calls" else "is called by"
+        return {"status": "answered", "answer": f"{symbol} {label}: {', '.join(names) if names else 'no named functions'}.", "evidence": evidence}
+    if not relationships:
+        return {"status": "abstain", "reason": "function_relationship_not_found", "answer": None, "evidence": []}
+    return {"status": "abstain", "reason": "function_relationship_ambiguous", "answer": None, "evidence": []}
+
+
 def find_text(program_path, term):
     root = Path(program_path).expanduser().resolve()
     if not root.exists():
