@@ -157,6 +157,28 @@ class SourcePathTests(unittest.TestCase):
             result = summarize_path(root)
             self.assertNotIn("operations:", " ".join(item["text"] for item in result["evidence"]))
 
+    def test_program_summary_resolves_import_aliases(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.py").write_text(
+                "from subprocess import run as execute\nimport sqlite3 as db\n\ndef launch():\n    db.connect(':memory:')\n    return execute(['tool'])\n",
+                encoding="utf-8",
+            )
+            result = summarize_path(root)
+            self.assertIn("sqlite3.connect (opens database)", result["answer"])
+            self.assertIn("subprocess.run (processes commands)", result["answer"])
+
+    def test_capability_resolves_import_aliases(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.py").write_text(
+                "from socket import socket as make_socket\n\ndef connect():\n    return make_socket()\n",
+                encoding="utf-8",
+            )
+            result = Questioner(root, {}).ask("does this program use the network?")
+            self.assertEqual(result["answer"], "yes")
+            self.assertGreater(result["matches"], 0)
+
     def test_program_summary_includes_metadata_and_entrypoint(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

@@ -89,16 +89,31 @@ def _python_operations(tree):
         "replace": "replace (moves paths)",
     }
     found = []
+    aliases = {}
+    for item in tree.body:
+        if isinstance(item, ast.Import):
+            for alias in item.names:
+                aliases[alias.asname or alias.name.split(".", 1)[0]] = alias.name
+        elif isinstance(item, ast.ImportFrom):
+            for alias in item.names:
+                aliases[alias.asname or alias.name] = f"{item.module or ''}.{alias.name}".strip(".")
     for node in ast.walk(tree):
         if not isinstance(node, ast.Call):
             continue
         if isinstance(node.func, ast.Name) and node.func.id in direct:
             found.append(node.func.id)
+        elif isinstance(node.func, ast.Name) and node.func.id in aliases:
+            target = aliases[node.func.id]
+            module, _, member = target.rpartition(".")
+            operation = qualified.get((module.split(".", 1)[0], member))
+            if operation:
+                found.append(operation)
         elif isinstance(node.func, ast.Attribute) and node.func.attr in methods:
             found.append(methods[node.func.attr])
         elif isinstance(node.func, ast.Attribute):
             receiver = ast.unparse(node.func.value) if hasattr(ast, "unparse") else ""
             root = receiver.split(".", 1)[0]
+            root = aliases.get(root, root).split(".", 1)[0]
             operation = qualified.get((root, node.func.attr))
             if operation:
                 found.append(operation)
@@ -417,6 +432,14 @@ def _python_capability_evidence(path, terms):
     except SyntaxError:
         return []
     matches = []
+    aliases = {}
+    for item in tree.body:
+        if isinstance(item, ast.Import):
+            for alias in item.names:
+                aliases[alias.asname or alias.name.split(".", 1)[0]] = alias.name
+        elif isinstance(item, ast.ImportFrom):
+            for alias in item.names:
+                aliases[alias.asname or alias.name] = f"{item.module or ''}.{alias.name}".strip(".")
     for node in ast.walk(tree):
         candidates = []
         if isinstance(node, ast.Import):
@@ -426,8 +449,13 @@ def _python_capability_evidence(path, terms):
         elif isinstance(node, ast.Call):
             if isinstance(node.func, ast.Name):
                 candidates.append(node.func.id)
+                if node.func.id in aliases:
+                    candidates.append(aliases[node.func.id])
             elif isinstance(node.func, ast.Attribute):
                 candidates.append(ast.unparse(node.func))
+                receiver = ast.unparse(node.func.value)
+                if receiver in aliases:
+                    candidates.append(f"{aliases[receiver]}.{node.func.attr}")
         if candidates and any(term in candidate.lower() for candidate in candidates for term in terms):
             line = source.splitlines()[max(node.lineno - 1, 0)].strip()
             matches.append(SourceEvidence(str(path), node.lineno, line))
