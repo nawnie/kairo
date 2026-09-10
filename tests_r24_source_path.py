@@ -139,6 +139,24 @@ class SourcePathTests(unittest.TestCase):
             result = Questioner(root, {}).ask("what does the function erase do?")
             self.assertIn("unlink (deletes paths)", result["answer"])
 
+    def test_program_summary_reports_qualified_side_effects(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.py").write_text(
+                "import sqlite3\nimport subprocess\n\ndef run():\n    sqlite3.connect(':memory:')\n    return subprocess.run(['tool'])\n",
+                encoding="utf-8",
+            )
+            result = summarize_path(root)
+            self.assertIn("sqlite3.connect (opens database)", result["answer"])
+            self.assertIn("subprocess.run (processes commands)", result["answer"])
+
+    def test_plain_function_name_is_not_reported_as_an_operation(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.py").write_text("def run():\n    return 1\n", encoding="utf-8")
+            result = summarize_path(root)
+            self.assertNotIn("operations:", " ".join(item["text"] for item in result["evidence"]))
+
     def test_program_summary_includes_metadata_and_entrypoint(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

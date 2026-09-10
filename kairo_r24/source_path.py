@@ -68,6 +68,15 @@ def _python_summary(path: Path):
 
 def _python_operations(tree):
     direct = {"open", "connect", "urlopen", "Popen", "system", "loads", "dumps"}
+    qualified = {
+        ("subprocess", "run"): "subprocess.run (processes commands)",
+        ("subprocess", "Popen"): "subprocess.Popen (starts processes)",
+        ("os", "system"): "os.system (runs commands)",
+        ("sqlite3", "connect"): "sqlite3.connect (opens database)",
+        ("requests", "get"): "requests.get (network request)",
+        ("requests", "post"): "requests.post (network request)",
+        ("urllib", "urlopen"): "urllib.urlopen (network request)",
+    }
     methods = {
         "unlink": "unlink (deletes paths)",
         "remove": "remove (deletes paths)",
@@ -87,6 +96,12 @@ def _python_operations(tree):
             found.append(node.func.id)
         elif isinstance(node.func, ast.Attribute) and node.func.attr in methods:
             found.append(methods[node.func.attr])
+        elif isinstance(node.func, ast.Attribute):
+            receiver = ast.unparse(node.func.value) if hasattr(ast, "unparse") else ""
+            root = receiver.split(".", 1)[0]
+            operation = qualified.get((root, node.func.attr))
+            if operation:
+                found.append(operation)
     return found
 
 
