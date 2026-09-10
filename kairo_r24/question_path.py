@@ -95,12 +95,12 @@ class Questioner:
         if capability_match:
             name = capability_match.group(1).lower().rstrip("s")
             return capability(self.program_path, {"file": "file", "database": "database", "network": "network", "processe": "process"}.get(name, name))
-        if not self.alphabet:
-            return search_question(self.program_path, question)
         if re.search(r"\bwhat does (this )?(program|project|code) do\b", question.lower()):
             return summarize_path(self.program_path)
         if re.search(r"\bwhat (are|is) (the )?(dependencies|entry point|entrypoint)\b", question, re.IGNORECASE):
             return entrypoints(self.program_path) if re.search(r"entry ?point", question, re.IGNORECASE) else dependencies(self.program_path)
+        if not self.alphabet:
+            return search_question(self.program_path, question)
         plan = _plan(question, self.alphabet)
         program_path = self.program_path
         alphabet = self.alphabet
