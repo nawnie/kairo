@@ -263,6 +263,18 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["answer"], "no")
             self.assertEqual(result["matches"], 0)
 
+    def test_capability_ignores_inline_comment_require_text(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.js").write_text(
+                'const label = "ordinary"; // require("socket")\nexport function run(value) { return value; }\n',
+                encoding="utf-8",
+            )
+            result = Questioner(root, {}).ask("does this program use the network?")
+            self.assertEqual(result["status"], "answered")
+            self.assertEqual(result["answer"], "no")
+            self.assertEqual(result["matches"], 0)
+
     def test_capability_detects_javascript_network_import(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
@@ -308,6 +320,16 @@ class SourcePathTests(unittest.TestCase):
             result = Questioner(root, {}).ask("what are the dependencies?")
             self.assertEqual(result["status"], "answered")
             self.assertEqual(result["dependencies"], ["express", "node:net"])
+
+    def test_dependencies_preserve_code_after_url_string(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.js").write_text(
+                'const endpoint = "https://example.test"; const net = require("node:net");\n',
+                encoding="utf-8",
+            )
+            result = Questioner(root, {}).ask("what are the dependencies?")
+            self.assertEqual(result["dependencies"], ["node:net"])
 
     def test_questioner_answers_dependencies_and_entrypoint(self):
         with tempfile.TemporaryDirectory() as folder:

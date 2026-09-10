@@ -119,3 +119,8 @@ being mislabeled as a database operation. Bare-name inference is now limited
 to built-in `open`; database, process, and network operations require imported
 or qualified source evidence. Function-level operation names follow the same
 rule.
+
+The cross-language scanner then received a quote-aware comment masker. The old
+regex could treat `//` inside a URL string as a comment or treat inline-comment
+text as code. Regression coverage now preserves real imports after URL strings
+and ignores fake `require("socket")` text in inline comments.

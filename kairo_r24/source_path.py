@@ -122,8 +122,7 @@ def _python_operations(tree):
 
 def _text_source_summary(path: Path):
     source = path.read_text(encoding="utf-8", errors="replace")
-    without_comments = re.sub(r"//[^\r\n]*", "", source)
-    without_comments = re.sub(r"/\*.*?\*/", "", without_comments, flags=re.DOTALL)
+    without_comments = _strip_c_style_comments(source)
     code = re.sub(r"(['\"])(?:\\.|(?!\1).)*\1", "", without_comments)
     items = []
     imports = []
@@ -138,6 +137,52 @@ def _text_source_summary(path: Path):
     if functions:
         items.append(SourceEvidence(str(path), 1, "functions: " + ", ".join(functions[:30])))
     return items
+
+
+def _strip_c_style_comments(source):
+    output = []
+    index = 0
+    quote = None
+    escaped = False
+    while index < len(source):
+        char = source[index]
+        following = source[index + 1] if index + 1 < len(source) else ""
+        if quote:
+            output.append(char)
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                quote = None
+            index += 1
+            continue
+        if char in {"'", '"', "`"}:
+            quote = char
+            output.append(char)
+            index += 1
+            continue
+        if char == "/" and following == "/":
+            output.extend("  ")
+            index += 2
+            while index < len(source) and source[index] not in "\r\n":
+                output.append(" ")
+                index += 1
+            continue
+        if char == "/" and following == "*":
+            output.extend("  ")
+            index += 2
+            while index < len(source):
+                if source[index] == "*" and index + 1 < len(source) and source[index + 1] == "/":
+                    output.extend("  ")
+                    index += 2
+                    break
+                output.append("\n" if source[index] in "\r\n" else " ")
+                index += 1
+            continue
+        output.append(char)
+        index += 1
+    return "".join(output)
 
 
 def summarize_path(program_path):
@@ -434,9 +479,11 @@ def capability(program_path, name):
 
 def _text_capability_evidence(path, terms):
     try:
-        lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+        source = path.read_text(encoding="utf-8", errors="replace")
     except OSError:
         return []
+    original_lines = source.splitlines()
+    lines = _strip_c_style_comments(source).splitlines()
     matches = []
     for number, line in enumerate(lines, 1):
         stripped = line.strip()
@@ -454,7 +501,8 @@ def _text_capability_evidence(path, terms):
             )
             require_pattern = rf"\brequire\s*\(\s*['\"][^'\"]*{escaped}"
             if any(re.search(pattern, code) for pattern in patterns) or (require_call and re.search(require_pattern, lowered_line)):
-                matches.append(SourceEvidence(str(path), number, stripped))
+                evidence_text = original_lines[number - 1].strip() if number <= len(original_lines) else stripped
+                matches.append(SourceEvidence(str(path), number, evidence_text))
                 break
     return matches
 
