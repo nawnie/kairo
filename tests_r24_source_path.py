@@ -277,6 +277,28 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["answer"], "yes")
             self.assertGreater(result["matches"], 0)
 
+    def test_dependencies_ignore_javascript_comments_and_string_text(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.js").write_text(
+                '// import fake-comment\nconst label = \'require("fake-string")\';\nexport function run(value) { return value; }\n',
+                encoding="utf-8",
+            )
+            result = Questioner(root, {}).ask("what are the dependencies?")
+            self.assertEqual(result["status"], "answered")
+            self.assertEqual(result["answer"], "No imports were identified.")
+
+    def test_dependencies_detect_javascript_import_and_require(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.js").write_text(
+                'import express from "express";\nconst net = require("node:net");\n',
+                encoding="utf-8",
+            )
+            result = Questioner(root, {}).ask("what are the dependencies?")
+            self.assertEqual(result["status"], "answered")
+            self.assertEqual(result["dependencies"], ["express", "node:net"])
+
     def test_questioner_answers_dependencies_and_entrypoint(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

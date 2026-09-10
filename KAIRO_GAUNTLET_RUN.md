@@ -107,3 +107,9 @@ An additional adversarial string containing the literal text
 the `require(` token to survive string removal before accepting the module
 specifier. The negative string case and the real `require("node:net")` case both
 pass.
+
+The dependency summary then failed a JavaScript probe by extracting package names
+from comments and string literals. Its import/require path is now guarded by
+comment removal and outside-string token checks; regression coverage confirms
+that fake text is ignored while real `import` and `require` dependencies are
+retained.

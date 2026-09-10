@@ -122,9 +122,17 @@ def _python_operations(tree):
 
 def _text_source_summary(path: Path):
     source = path.read_text(encoding="utf-8", errors="replace")
+    without_comments = re.sub(r"//[^\r\n]*", "", source)
+    without_comments = re.sub(r"/\*.*?\*/", "", without_comments, flags=re.DOTALL)
+    code = re.sub(r"(['\"])(?:\\.|(?!\1).)*\1", "", without_comments)
     items = []
-    imports = sorted(set(re.findall(r"(?:import|require\s*\()\s*[\"']?([A-Za-z0-9_./@-]+)", source)))
-    functions = sorted(set(re.findall(r"(?:function\s+|(?:fn|func|void|int|string|public|private)\s+)([A-Za-z_]\w*)\s*\(", source)))
+    imports = []
+    if re.search(r"\bimport\b", code):
+        imports.extend(re.findall(r"\bimport\s+(?:[^;\r\n]*?\s+from\s+)?['\"]([^'\"]+)['\"]", without_comments))
+    if re.search(r"\brequire\s*\(", code):
+        imports.extend(re.findall(r"\brequire\s*\(\s*['\"]([^'\"]+)['\"]", without_comments))
+    imports = sorted(set(imports))
+    functions = sorted(set(re.findall(r"(?:function\s+|(?:fn|func|void|int|string|public|private)\s+)([A-Za-z_]\w*)\s*\(", code)))
     if imports:
         items.append(SourceEvidence(str(path), 1, "imports: " + ", ".join(imports[:30])))
     if functions:
