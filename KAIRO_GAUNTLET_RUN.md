@@ -97,3 +97,7 @@ reported as network use. Non-Python capability scanning now requires
 syntax-shaped evidence such as an import, `require`/`from`, or a call/member
 access, and regression coverage confirms both the string-literal negative and a
 real network import positive.
+
+The follow-up positive caught a missed `require("node:net")` case; the scanner
+now preserves module specifiers for explicit `require(...)` evidence while
+continuing to ignore ordinary string literals.

@@ -434,16 +434,17 @@ def _text_capability_evidence(path, terms):
         stripped = line.strip()
         if not stripped or stripped.startswith(("#", "//", "/*", "*", "<!--")):
             continue
-        code = re.sub(r"(['\"])(?:\\.|(?!\1).)*\1", "", line).lower()
+        lowered_line = line.lower()
+        code = re.sub(r"(['\"])(?:\\.|(?!\1).)*\1", "", lowered_line)
         for term in terms:
             escaped = re.escape(term.lower())
             patterns = (
                 rf"\bimport\b[^;]*\b{escaped}\b",
                 rf"\bfrom\b[^;]*\b{escaped}\b",
-                rf"\brequire\s*\(\s*['\"][^'\"]*{escaped}",
                 rf"\b{escaped}\s*(?:\(|\.)",
             )
-            if any(re.search(pattern, code) for pattern in patterns):
+            require_pattern = rf"\brequire\s*\(\s*['\"][^'\"]*{escaped}"
+            if any(re.search(pattern, code) for pattern in patterns) or re.search(require_pattern, lowered_line):
                 matches.append(SourceEvidence(str(path), number, stripped))
                 break
     return matches
