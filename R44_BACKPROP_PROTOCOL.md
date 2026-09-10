@@ -15,6 +15,13 @@ The first comparison must include:
 - matched random challenge control;
 - matched compute/query/resource budgets.
 
+The auxiliary observation buffer is bounded at 512 prefix/output examples
+per task using deterministic reservoir replacement, and the first ablation
+uses eight local training epochs. The head's parameter
+count depends only on the action alphabet, history window, and observed output
+labels; it is not allowed to grow with the entire project or indefinitely with
+runtime.
+
 The symbolic model, artifact check, independent product traversal, and replay
 remain the acceptance gates. A lower loss, higher confidence, or faster
 challenge ranking is not model correctness. Any claimed benefit must survive
