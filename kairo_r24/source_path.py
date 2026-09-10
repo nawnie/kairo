@@ -282,6 +282,30 @@ def find_text(program_path, term):
             "evidence": [item.as_dict() for item in matches[:40]], "matches": len(matches)}
 
 
+def search_question(program_path, question):
+    stop = {"what", "does", "this", "that", "program", "project", "code", "how", "is", "the", "a", "an", "do", "why", "where", "which", "tell", "me", "about"}
+    terms = [word for word in re.findall(r"[A-Za-z_][A-Za-z0-9_/-]{2,}", question.lower()) if word not in stop]
+    if not terms:
+        return {"status": "abstain", "reason": "no_search_terms", "answer": None, "evidence": []}
+    root = Path(program_path).expanduser().resolve()
+    scored = []
+    for path in _files(root):
+        try:
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError:
+            continue
+        for number, line in enumerate(lines, 1):
+            lowered = line.lower()
+            score = sum(term in lowered or (len(term) >= 6 and term[:6] in lowered) for term in terms)
+            if score:
+                scored.append((score, SourceEvidence(str(path), number, line.strip())))
+    scored.sort(key=lambda item: (-item[0], item[1].path, item[1].line))
+    if not scored:
+        return {"status": "abstain", "reason": "no_relevant_source_evidence", "answer": None, "evidence": []}
+    evidence = [item.as_dict() for _, item in scored[:20]]
+    return {"status": "answered", "answer": f"Relevant source evidence found for: {', '.join(terms)}.", "evidence": evidence, "matches": len(scored)}
+
+
 def capability(program_path, name):
     groups = {
         "network": {"requests", "urllib", "http", "socket", "urlopen", "websocket"},

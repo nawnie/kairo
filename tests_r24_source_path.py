@@ -124,6 +124,16 @@ class SourcePathTests(unittest.TestCase):
             self.assertIn("sqlite3", dependencies_result["answer"])
             self.assertIn("main.py", entrypoint_result["answer"])
 
+    def test_open_ended_source_question_returns_ranked_evidence(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "auth.py").write_text("def authenticate(token):\n    return validate_token(token)\n", encoding="utf-8")
+            questioner = Questioner(root, {})
+            result = questioner.ask("how does authentication work?")
+            self.assertEqual(result["status"], "answered")
+            self.assertIn("authentication", result["answer"])
+            self.assertTrue(any("authenticate" in item["text"] for item in result["evidence"]))
+
     def test_program_summary_reads_mixed_language_structure(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
