@@ -4,6 +4,9 @@ R38 adds a source-evidence path to the existing path-only question session.
 When asked `what does this program do?`, Kairo scans the supplied file or
 directory, reads README/description text, parses Python structure, and returns
 a concise purpose summary with file/line evidence.
+Traversal excludes common result, dataset, archive, receipt, truth, and
+private-fixture locations so a broad program root does not automatically expose
+research-only material.
 
 It also answers `what does the function NAME do?` for an unambiguous Python
 function, reporting its documentation, direct named calls, and return

@@ -19,7 +19,15 @@ class SourceEvidence:
 def _files(root: Path):
     if root.is_file():
         return [root]
-    return sorted(p for p in root.rglob("*") if p.is_file() and ".git" not in p.parts and "__pycache__" not in p.parts)
+    excluded = {".git", "__pycache__", ".pytest_cache", "results", "datasets", "delivery", "verification", "sources", "archive", "archives", "kairo_discovery_lab_r5_endogenous_explanations"}
+    files = []
+    for path in root.rglob("*"):
+        if not path.is_file() or any(part.lower() in excluded for part in path.parts):
+            continue
+        if any(token in path.name.lower() for token in ("private", "truth", "receipt", "secret", "credential")):
+            continue
+        files.append(path)
+    return sorted(files)
 
 
 def _python_summary(path: Path):

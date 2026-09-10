@@ -7,6 +7,7 @@ ambiguous.
 from __future__ import annotations
 
 import re
+from pathlib import Path
 
 from .path_learn import learn_path
 from .path_program import PathProgram
@@ -63,9 +64,13 @@ class Questioner:
     def __init__(self, program_path, protocol):
         self.program_path = str(program_path)
         self.protocol = protocol
-        with PathProgram(program_path) as program:
-            self.alphabet = program.describe()
-        self.learning = learn_path(program_path, protocol)
+        if Path(program_path).expanduser().resolve().is_dir():
+            self.alphabet = ()
+            self.learning = {"status": "source_only", "queries": 0, "model": None}
+        else:
+            with PathProgram(program_path) as program:
+                self.alphabet = program.describe()
+            self.learning = learn_path(program_path, protocol)
 
     def ask(self, question):
         function_match = re.search(r"\bwhat does (?:the )?function\s+([A-Za-z_]\w*)\s+do\b", question, re.IGNORECASE)
