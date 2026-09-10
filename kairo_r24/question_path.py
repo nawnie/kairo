@@ -11,7 +11,7 @@ import re
 from .path_learn import learn_path
 from .path_program import PathProgram
 from kairo_r11.model import Model
-from .source_path import find_symbol, summarize_function, summarize_path
+from .source_path import find_symbol, find_text, summarize_function, summarize_path
 
 
 def _plan(question, alphabet):
@@ -74,6 +74,9 @@ class Questioner:
         symbol_match = re.search(r"\bwhere is (?:the )?(?:function|class)\s+([A-Za-z_]\w*)\s+defined\b", question, re.IGNORECASE) or re.search(r"\bwhere is (?:the )?([A-Za-z_]\w*)\s+defined\b", question, re.IGNORECASE)
         if symbol_match:
             return find_symbol(self.program_path, symbol_match.group(1))
+        text_match = re.search(r"\b(?:which files|where) (?:mention|contain)\s+['\"]?([^'\"?]+?)['\"]?\s*\??$", question, re.IGNORECASE)
+        if text_match:
+            return find_text(self.program_path, text_match.group(1).strip())
         if re.search(r"\bwhat does (this )?(program|project|code) do\b", question.lower()):
             return summarize_path(self.program_path)
         plan = _plan(question, self.alphabet)

@@ -50,6 +50,18 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["status"], "answered")
             self.assertIn("tool.py:1", result["answer"])
 
+    def test_questioner_finds_text_evidence_from_path(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            source = root / "tool.py"
+            source.write_text("inventory = []\nvalue = 'inventory'\n", encoding="utf-8")
+            questioner = object.__new__(Questioner)
+            questioner.program_path = str(root)
+            result = questioner.ask("which files mention inventory?")
+            self.assertEqual(result["status"], "answered")
+            self.assertEqual(result["matches"], 2)
+            self.assertTrue(all(item["path"].endswith("tool.py") for item in result["evidence"]))
+
 
 if __name__ == "__main__":
     unittest.main()

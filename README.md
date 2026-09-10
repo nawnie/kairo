@@ -24,6 +24,7 @@ Example questions include:
 what does this program do?
 what does the function convert do?
 where is the class Converter defined?
+which files mention inventory?
 how many states does this program have?
 what changes after toggling?
 ```

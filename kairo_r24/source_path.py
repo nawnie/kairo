@@ -155,3 +155,23 @@ def find_symbol(program_path, symbol):
         return {"status": "abstain", "reason": "symbol_name_is_ambiguous", "answer": None,
                 "evidence": [item.as_dict() for item in matches]}
     return {"status": "abstain", "reason": "symbol_not_found", "answer": None, "evidence": []}
+
+
+def find_text(program_path, term):
+    root = Path(program_path).expanduser().resolve()
+    if not root.exists():
+        return {"status": "error", "reason": "program_path_not_found", "answer": None, "evidence": []}
+    matches = []
+    needle = term.lower()
+    for path in _files(root):
+        try:
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError:
+            continue
+        for number, line in enumerate(lines, 1):
+            if needle in line.lower():
+                matches.append(SourceEvidence(str(path), number, line.strip()))
+    if not matches:
+        return {"status": "abstain", "reason": "text_not_found", "answer": None, "evidence": []}
+    return {"status": "answered", "answer": f"Found {len(matches)} matching line(s) for {term!r}.",
+            "evidence": [item.as_dict() for item in matches[:40]], "matches": len(matches)}
