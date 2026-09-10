@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1460" viewBox="0 0 1800 1460">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="0" y="0" width="1800" height="165" fill="#122b49"/>
+<text x="60" y="70" font-family="Inter, Arial, sans-serif" font-size="43" font-weight="700" fill="#ffffff" text-anchor="start"><tspan x="60" dy="0">How close is Kairo to physical reservoir computing?</tspan></text>
+<text x="62" y="120" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="400" fill="#c9d7ea" text-anchor="start"><tspan x="62" dy="0">Fact-checked architecture comparison • September 10, 2026</tspan></text>
+<text x="1740" y="120" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="400" fill="#c9d7ea" text-anchor="end"><tspan x="1740" dy="0">Not a claim of physical implementation</tspan></text>
+<rect x="50" y="210" width="210" height="72" rx="12" fill="#f7f9fc"/>
+<rect x="260" y="210" width="500" height="72" fill="#edf5ff"/>
+<rect x="760" y="210" width="500" height="72" fill="#f5efff"/>
+<rect x="1260" y="210" width="500" height="72" rx="12" fill="#ecfbf8"/>
+<text x="74" y="255" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#607086" text-anchor="start"><tspan x="74" dy="0">PROPERTY</tspan></text>
+<text x="510" y="244" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#2563eb" text-anchor="middle"><tspan x="510" dy="0">KAIRO NOW</tspan></text>
+<text x="510" y="270" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" fill="#2563eb" text-anchor="middle"><tspan x="510" dy="0">explicit software system</tspan></text>
+<text x="1010" y="244" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#6d28d9" text-anchor="middle"><tspan x="1010" dy="0">GENERATIVE LLMs</tspan></text>
+<text x="1010" y="270" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" fill="#6d28d9" text-anchor="middle"><tspan x="1010" dy="0">learned neural models</tspan></text>
+<text x="1510" y="244" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="800" fill="#0f9f8f" text-anchor="middle"><tspan x="1510" dy="0">PHYSICAL RESERVOIR COMPUTING</tspan></text>
+<text x="1510" y="270" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" fill="#0f9f8f" text-anchor="middle"><tspan x="1510" dy="0">physical dynamical computing</tspan></text>
+<rect x="50" y="282" width="1710" height="92" fill="#ffffff"/><line x1="50" y1="374" x2="1760" y2="374" stroke="#d6dee9"/>
+<text x="74" y="332" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800" fill="#17233a">STATE</text>
+<text x="284" y="317" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="284" dy="0">Explicit finite observable states;</tspan><tspan x="284" dy="26">source/runtime evidence</tspan></text>
+<text x="784" y="317" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="784" dy="0">High-dimensional hidden activations;</tspan><tspan x="784" dy="26">knowledge encoded in parameters</tspan></text>
+<text x="1284" y="317" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="1284" dy="0">High-dimensional states of a</tspan><tspan x="1284" dy="26">physical dynamical system</tspan></text>
+<rect x="50" y="374" width="1710" height="92" fill="#fbfcfe"/><line x1="50" y1="466" x2="1760" y2="466" stroke="#d6dee9"/>
+<text x="74" y="424" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800" fill="#17233a">DYNAMICS</text>
+<text x="284" y="409" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="284">Actively probes reset/step behavior;</tspan><tspan x="284" dy="26">predicts, then fresh-trace checks</tspan></text>
+<text x="784" y="409" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="784">Nonlinear neural computation; weights</tspan><tspan x="784" dy="26">usually fixed during inference</tspan></text>
+<text x="1284" y="409" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="1284">Intrinsic nonlinear, history-dependent</tspan><tspan x="1284" dy="26">physical dynamics</tspan></text>
+<rect x="50" y="466" width="1710" height="92" fill="#ffffff"/><line x1="50" y1="558" x2="1760" y2="558" stroke="#d6dee9"/>
+<text x="74" y="516" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800" fill="#17233a">LEARNING</text>
+<text x="284" y="501" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="284">Active finite-model learning + verification;</tspan><tspan x="284" dy="26">R39 exact equivalence not established</tspan></text>
+<text x="784" y="501" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="784">Self-supervised pretraining + post-training;</tspan><tspan x="784" dy="26">in-context adaptation at inference</tspan></text>
+<text x="1284" y="501" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="1284">Reservoir usually fixed; train a</tspan><tspan x="1284" dy="26">lightweight readout</tspan></text>
+<rect x="50" y="558" width="1710" height="92" fill="#fbfcfe"/><line x1="50" y1="650" x2="1760" y2="650" stroke="#d6dee9"/>
+<text x="74" y="608" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800" fill="#17233a">MEMORY</text>
+<text x="284" y="593" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="284">Retained explicit learned model</tspan><tspan x="284" dy="26">and attached evidence</tspan></text>
+<text x="784" y="593" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="784">Parametric weights + temporary</tspan><tspan x="784" dy="26">context / activation state</tspan></text>
+<text x="1284" y="593" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="1284">Fading transient memory of</tspan><tspan x="1284" dy="26">recent input history</tspan></text>
+<rect x="50" y="650" width="1710" height="92" fill="#ffffff"/><line x1="50" y1="742" x2="1760" y2="742" stroke="#d6dee9"/>
+<text x="74" y="700" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800" fill="#17233a">SUBSTRATE</text>
+<text x="284" y="685" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="284">Python software. SQLite is an R39</tspan><tspan x="284" dy="26">workload, not Kairo's substrate</tspan></text>
+<text x="784" y="685" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="784">Digital neural networks on</tspan><tspan x="784" dy="26">GPUs / TPUs / accelerators</tspan></text>
+<text x="1284" y="685" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="1284">Electronic, optical, magnetic,</tspan><tspan x="1284" dy="26">memristive, mechanical, quantum, etc.</tspan></text>
+<rect x="50" y="742" width="1710" height="92" fill="#fbfcfe"/><line x1="50" y1="834" x2="1760" y2="834" stroke="#d6dee9"/>
+<text x="74" y="792" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800" fill="#17233a">PRIMARY GOAL</text>
+<text x="284" y="777" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="284">Inspectable predictions/explanations</tspan><tspan x="284" dy="26">for supplied programs; abstain if unsure</tspan></text>
+<text x="784" y="777" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="784">General language/multimodal tasks;</tspan><tspan x="784" dy="26">next-token prediction is a common pretrain goal</tspan></text>
+<text x="1284" y="777" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="1284">Transform temporal inputs so a</tspan><tspan x="1284" dy="26">simple readout solves tasks</tspan></text>
+<rect x="50" y="834" width="1710" height="92" fill="#ffffff"/><line x1="50" y1="926" x2="1760" y2="926" stroke="#d6dee9"/>
+<text x="74" y="884" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800" fill="#17233a">OBSERVABILITY</text>
+<text x="284" y="869" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="284">High at represented model/evidence layer;</tspan><tspan x="284" dy="26">bounded by what is measured</tspan></text>
+<text x="784" y="869" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="784">Partial: activations measurable, but</tspan><tspan x="784" dy="26">semantic interpretation remains difficult</tspan></text>
+<text x="1284" y="869" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="1284">Varies: measurable states, but noise</tspan><tspan x="1284" dy="26">and hidden variables can limit access</tspan></text>
+<rect x="50" y="926" width="1710" height="92" fill="#fbfcfe"/><line x1="50" y1="1018" x2="1760" y2="1018" stroke="#d6dee9"/>
+<text x="74" y="976" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800" fill="#17233a">ADAPTABILITY</text>
+<text x="284" y="961" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="284">Explicit relearning + model reuse;</tspan><tspan x="284" dy="26">current semantic planner remains bounded</tspan></text>
+<text x="784" y="961" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="784">In-context learning; weight changes via</tspan><tspan x="784" dy="26">fine-tuning / adapters / training</tspan></text>
+<text x="1284" y="961" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="1284">Usually retrain readout; some reservoirs</tspan><tspan x="1284" dy="26">can also be tuned/reconfigured</tspan></text>
+<rect x="50" y="1018" width="1710" height="92" fill="#ffffff"/><line x1="50" y1="1110" x2="1760" y2="1110" stroke="#d6dee9"/>
+<text x="74" y="1068" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800" fill="#17233a">MATURITY</text>
+<text x="284" y="1053" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="284">Research prototype; bounded</tspan><tspan x="284" dy="26">program-adapter/source-analysis paths</tspan></text>
+<text x="784" y="1053" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a">Production technology</text>
+<text x="1284" y="1053" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="1284">Active research; niche and early</tspan><tspan x="1284" dy="26">commercial / edge applications</tspan></text>
+<rect x="50" y="1110" width="1710" height="92" fill="#fbfcfe"/><line x1="50" y1="1202" x2="1760" y2="1202" stroke="#d6dee9"/>
+<text x="74" y="1160" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800" fill="#17233a">KEY LIMITATION</text>
+<text x="284" y="1145" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="284">Bounded semantics; learned finite models</tspan><tspan x="284" dy="26">can be inexact; not a reservoir</tspan></text>
+<text x="784" y="1145" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="784">Opaque representations, hallucinations,</tspan><tspan x="784" dy="26">high training/inference compute</tspan></text>
+<text x="1284" y="1145" font-family="Inter, Arial, sans-serif" font-size="18" fill="#17233a"><tspan x="1284">Noise, reproducibility, interfacing,</tspan><tspan x="1284" dy="26">tuning and scalability constraints</tspan></text>
+<rect x="50" y="1230" width="1710" height="190" rx="18" fill="#fff8e8" stroke="#e9ad32" stroke-width="2"/>
+<circle cx="90" cy="1273" r="19" fill="#f5a623"/>
+<text x="90" y="1281" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800" fill="#ffffff" text-anchor="middle">!</text>
+<text x="126" y="1268" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#17233a">BOTTOM LINE</text>
+<text x="126" y="1303" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="500" fill="#17233a">Kairo is not 'almost' physical reservoir computing. The overlap is methodological: probing, state observation, prediction, and verification.</text>
+<text x="126" y="1333" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="500" fill="#17233a">A Kairo + PRC branch would be a hybrid: Kairo as controller/evaluator plus a true nonlinear physical reservoir with fading memory,</text>
+<text x="126" y="1363" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="500" fill="#17233a">measurable high-dimensional states, and a trained readout. Adding hardware alone would not make current Kairo a reservoir computer.</text>
+<text x="126" y="1398" font-family="Inter, Arial, sans-serif" font-size="15" fill="#607086">Evidence: Kairo R37-R39; Tanaka et al. 2019; Liang et al. 2024; Vaswani et al. 2017; Brown et al. 2020; GPT-4 Technical Report 2023.</text>
+<text x="1752" y="1442" font-family="Inter, Arial, sans-serif" font-size="15" fill="#607086" text-anchor="end">Full source notes: docs/KAIRO_COMPARISON.md</text>
+</svg>
