@@ -436,6 +436,7 @@ def _text_capability_evidence(path, terms):
             continue
         lowered_line = line.lower()
         code = re.sub(r"(['\"])(?:\\.|(?!\1).)*\1", "", lowered_line)
+        require_call = re.search(r"\brequire\s*\(", code)
         for term in terms:
             escaped = re.escape(term.lower())
             patterns = (
@@ -444,7 +445,7 @@ def _text_capability_evidence(path, terms):
                 rf"\b{escaped}\s*(?:\(|\.)",
             )
             require_pattern = rf"\brequire\s*\(\s*['\"][^'\"]*{escaped}"
-            if any(re.search(pattern, code) for pattern in patterns) or re.search(require_pattern, lowered_line):
+            if any(re.search(pattern, code) for pattern in patterns) or (require_call and re.search(require_pattern, lowered_line)):
                 matches.append(SourceEvidence(str(path), number, stripped))
                 break
     return matches

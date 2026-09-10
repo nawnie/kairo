@@ -101,3 +101,9 @@ real network import positive.
 The follow-up positive caught a missed `require("node:net")` case; the scanner
 now preserves module specifiers for explicit `require(...)` evidence while
 continuing to ignore ordinary string literals.
+
+An additional adversarial string containing the literal text
+`require("socket")` exposed a second false positive. The scanner now requires
+the `require(` token to survive string removal before accepting the module
+specifier. The negative string case and the real `require("node:net")` case both
+pass.

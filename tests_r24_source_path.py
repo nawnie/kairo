@@ -241,6 +241,18 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["answer"], "no")
             self.assertEqual(result["matches"], 0)
 
+    def test_capability_ignores_javascript_string_containing_require_text(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.js").write_text(
+                'const label = \'example: require("socket")\';\nexport function run(value) { return value; }\n',
+                encoding="utf-8",
+            )
+            result = Questioner(root, {}).ask("does this program use the network?")
+            self.assertEqual(result["status"], "answered")
+            self.assertEqual(result["answer"], "no")
+            self.assertEqual(result["matches"], 0)
+
     def test_capability_detects_javascript_network_import(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
