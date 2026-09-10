@@ -190,10 +190,11 @@ def summarize_path(program_path):
     if not files:
         return {"status": "abstain", "reason": "no_readable_files", "answer": None, "evidence": []}
     parts = []
+    source_present = any(path.suffix.lower() in {".py", ".js", ".jsx", ".ts", ".tsx", ".go", ".rs", ".java", ".cs", ".cpp", ".c", ".h"} for path in files)
     if operations:
         parts.append("Source code shows operations: " + ", ".join(sorted(operations)) + ".")
     if docs:
-        label = "Documentation claim not independently corroborated by source operations: " if operations else "Project documentation says: "
+        label = "Documentation claim not independently corroborated by source operations: " if source_present else "Project documentation says: "
         parts.append(label + " ".join(docs[:3]))
     if descriptions:
         parts.append("Python module descriptions: " + " ".join(descriptions[:5]))

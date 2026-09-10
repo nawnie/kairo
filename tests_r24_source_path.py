@@ -197,6 +197,15 @@ class SourcePathTests(unittest.TestCase):
             self.assertIn("open", result["answer"])
             self.assertIn("__main__", " ".join(item["text"] for item in result["evidence"]))
 
+    def test_program_summary_labels_unverified_docs_when_source_has_no_operations(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "README.md").write_text("This tool sends confidential reports securely.\n", encoding="utf-8")
+            (root / "main.py").write_text("def run(value):\n    return value\n", encoding="utf-8")
+            result = summarize_path(root)
+            self.assertIn("Documentation claim not independently corroborated", result["answer"])
+            self.assertNotIn("Project documentation says:", result["answer"])
+
     def test_questioner_answers_source_capability(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

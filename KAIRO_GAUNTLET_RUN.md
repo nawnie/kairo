@@ -85,3 +85,8 @@ semantic analyzer. Explicit capability handlers remain available for questions
 they can actually ground, such as whether source imports a network library.
 
 Regression verification: pending after this repair.
+
+The summary path was also tightened so a README claim is labeled as
+uncorroborated whenever source files are present, even if the source exposes no
+recognized operation. This prevents documentation-only descriptions from being
+silently promoted to source-backed behavior.
