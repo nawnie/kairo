@@ -175,6 +175,7 @@ def summarize_function(program_path, function_name):
         for node in ast.walk(tree):
             if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == function_name:
                 doc = ast.get_docstring(node, clean=True)
+                parameters = [arg.arg for arg in node.args.args]
                 calls = sorted({call.func.id for call in ast.walk(node)
                                 if isinstance(call, ast.Call) and isinstance(call.func, ast.Name)})
                 returns = [ast.get_source_segment(source, item.value) for item in ast.walk(node)
@@ -183,6 +184,7 @@ def summarize_function(program_path, function_name):
                 if doc:
                     evidence.append(SourceEvidence(str(path), node.lineno, doc.splitlines()[0]))
                 answer = f"{function_name} is defined in {path.name}."
+                answer += f" Parameters: {', '.join(parameters) if parameters else 'none'}."
                 if doc:
                     answer += f" Documentation: {doc.splitlines()[0]}"
                 if calls:

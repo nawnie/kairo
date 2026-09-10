@@ -76,6 +76,9 @@ class Questioner:
         function_match = re.search(r"\bwhat does (?:the )?function\s+([A-Za-z_]\w*)\s+do\b", question, re.IGNORECASE)
         if function_match:
             return summarize_function(self.program_path, function_match.group(1))
+        signature_match = re.search(r"\bwhat (?:inputs|parameters|arguments) does (?:the )?function\s+([A-Za-z_]\w*)\s+(?:accept|take)\b", question, re.IGNORECASE)
+        if signature_match:
+            return summarize_function(self.program_path, signature_match.group(1))
         relationship_match = re.search(r"\bwhat does (?:the )?function\s+([A-Za-z_]\w*)\s+call\b", question, re.IGNORECASE)
         if relationship_match:
             return function_relationship(self.program_path, relationship_match.group(1), "calls")

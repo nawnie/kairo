@@ -68,6 +68,15 @@ class SourcePathTests(unittest.TestCase):
             self.assertIn("helper", calls["answer"])
             self.assertIn("run", callers["answer"])
 
+    def test_questioner_answers_function_parameters(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "tool.py").write_text("def convert(source, destination='out.json'):\n    return source\n", encoding="utf-8")
+            questioner = Questioner(root, {})
+            result = questioner.ask("what inputs does the function convert accept?")
+            self.assertEqual(result["status"], "answered")
+            self.assertIn("source, destination", result["answer"])
+
     def test_program_summary_includes_metadata_and_entrypoint(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
