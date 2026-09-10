@@ -8,7 +8,7 @@ from kairo_r15.client import digest
 from kairo_r18.feedback import FeedbackLearner
 from kairo_r19.client import satisfies
 from kairo_r22.file_client import run as task_run
-from kairo_r23.challenges import edits
+from kairo_r23.challenges import edits, proposals
 from .backprop import TraceHead
 
 
@@ -46,7 +46,8 @@ def run(boot, call):
     training_losses = head.fit(observations, epochs=8) if observations else []
     if base["status"] == "success" and artifact and artifact["model"]:
         model = Model.from_dict(artifact["model"])
-        generated = edits(word, protocol["challenge_queries"], protocol["action_budget"])
+        candidate_policy = "frontier_challenges" if boot["policy"] == "frontier_backprop" else "plan_challenges"
+        generated = proposals(word, boot["alphabet"], candidate_policy, protocol["challenge_seed"] + boot["ordinal"], protocol["challenge_queries"], protocol["action_budget"], artifact.get("access_words"))
         ranked = []
         for proposal in generated:
             scored = dict(proposal); scored["backprop_uncertainty"] = head.challenge_score(proposal["word"])
