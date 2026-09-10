@@ -128,6 +128,8 @@ def _text_source_summary(path: Path):
     imports = []
     if re.search(r"\bimport\b", code):
         imports.extend(re.findall(r"\bimport\s+(?:[^;\r\n]*?\s+from\s+)?['\"]([^'\"]+)['\"]", without_comments))
+    if re.search(r"\bimport\s*\(", code):
+        imports.extend(re.findall(r"\bimport\s*\(\s*['\"]([^'\"]+)['\"]", without_comments))
     if re.search(r"\brequire\s*\(", code):
         imports.extend(re.findall(r"\brequire\s*\(\s*['\"]([^'\"]+)['\"]", without_comments))
     imports = sorted(set(imports))
@@ -500,7 +502,11 @@ def _text_capability_evidence(path, terms):
                 rf"\b{escaped}\s*(?:\(|\.)",
             )
             require_pattern = rf"\brequire\s*\(\s*['\"][^'\"]*{escaped}"
-            if any(re.search(pattern, code) for pattern in patterns) or (require_call and re.search(require_pattern, lowered_line)):
+            dynamic_import_pattern = rf"\bimport\s*\(\s*['\"][^'\"]*{escaped}"
+            dynamic_import_call = re.search(r"\bimport\s*\(", code)
+            if (any(re.search(pattern, code) for pattern in patterns)
+                    or (require_call and re.search(require_pattern, lowered_line))
+                    or (dynamic_import_call and re.search(dynamic_import_pattern, lowered_line))):
                 evidence_text = original_lines[number - 1].strip() if number <= len(original_lines) else stripped
                 matches.append(SourceEvidence(str(path), number, evidence_text))
                 break

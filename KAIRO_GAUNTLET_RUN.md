@@ -129,3 +129,8 @@ The routing audit found one remaining lexical mismatch: template literals were
 recognized by comment masking but not by later string removal. Template text
 containing fake `require(...)` evidence is now excluded from both capability and
 dependency scans.
+
+Hard-variant coverage then found that dynamic JavaScript imports
+(`import("...")`) were missed entirely. Both capability and dependency paths
+now detect guarded dynamic imports, and a quoted fake dynamic-import string is
+still ignored.
