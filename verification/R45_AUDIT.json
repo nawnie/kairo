@@ -1,0 +1,100 @@
+{
+  "experiment": "R45",
+  "tasks": [
+    {
+      "policy": "plan_challenges",
+      "case": "D1",
+      "status": "success",
+      "queries": 602,
+      "target_states": 11,
+      "artifact": true,
+      "exact": false,
+      "replay": true
+    },
+    {
+      "policy": "plan_challenges",
+      "case": "D2",
+      "status": "success",
+      "queries": 602,
+      "target_states": 11,
+      "artifact": true,
+      "exact": false,
+      "replay": true
+    },
+    {
+      "policy": "plan_challenges",
+      "case": "D3",
+      "status": "success",
+      "queries": 602,
+      "target_states": 11,
+      "artifact": true,
+      "exact": false,
+      "replay": true
+    },
+    {
+      "policy": "random_challenges",
+      "case": "D1",
+      "status": "success",
+      "queries": 602,
+      "target_states": 11,
+      "artifact": true,
+      "exact": false,
+      "replay": true
+    },
+    {
+      "policy": "random_challenges",
+      "case": "D2",
+      "status": "success",
+      "queries": 602,
+      "target_states": 11,
+      "artifact": true,
+      "exact": false,
+      "replay": true
+    },
+    {
+      "policy": "random_challenges",
+      "case": "D3",
+      "status": "success",
+      "queries": 602,
+      "target_states": 11,
+      "artifact": true,
+      "exact": false,
+      "replay": true
+    },
+    {
+      "policy": "backprop_challenges",
+      "case": "D1",
+      "status": "success",
+      "queries": 602,
+      "target_states": 11,
+      "artifact": true,
+      "exact": false,
+      "replay": true
+    },
+    {
+      "policy": "backprop_challenges",
+      "case": "D2",
+      "status": "success",
+      "queries": 602,
+      "target_states": 11,
+      "artifact": true,
+      "exact": false,
+      "replay": true
+    },
+    {
+      "policy": "backprop_challenges",
+      "case": "D3",
+      "status": "success",
+      "queries": 602,
+      "target_states": 11,
+      "artifact": true,
+      "exact": false,
+      "replay": true
+    }
+  ],
+  "task_count": 9,
+  "artifacts": 9,
+  "exact": 0,
+  "replays": 9,
+  "goal_achieved": false
+}

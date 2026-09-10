@@ -42,6 +42,19 @@ class R43AuditTests(unittest.TestCase):
         events = [{"request": {"op": "step", "action": "op_0"}, "response": {"output": "fabricated_output"}}]
         self.assertNotEqual(actual, events[0]["response"]["output"])
 
+    def test_product_audit_rejects_shallow_model(self):
+        target, _ = product(self.case)
+        with tempfile.TemporaryDirectory() as directory:
+            backend = FileWorkflow(Path(directory) / "x", self.case)
+            from kairo_r24.backend import explore
+            raw = explore(backend, 64)["model"]
+        model = {"schema": "kairo.symbolic-mealy.v1", "alphabet": raw["alphabet"], "transitions": []}
+        for index in range(len(raw["transitions"])):
+            model["transitions"].append([[int(raw["transitions"]["s" + str(index)][action][0][1:]), raw["transitions"]["s" + str(index)][action][1]] for action in raw["alphabet"]])
+        model["transitions"] = model["transitions"][:1]
+        model["transitions"][0] = [[0, output] for _, output in model["transitions"][0]]
+        self.assertFalse(exact_model(model, target))
+
 
 if __name__ == "__main__":
     unittest.main()

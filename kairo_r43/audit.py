@@ -1,5 +1,6 @@
 import json
 import tempfile
+from collections import deque
 from pathlib import Path
 
 from kairo_r11.model import Model
@@ -42,14 +43,19 @@ def replay(case, events):
 
 def exact_model(model, target):
     if not model: return False
-    learned = Model.from_dict(model); access = {"s0": []}; changed = True
-    while changed:
-        changed = False
-        for state, mapping in target["transitions"].items():
-            if state not in access: continue
-            for action, (next_state, _) in mapping.items():
-                if next_state not in access: access[next_state] = access[state] + [action]; changed = True
-    return all(list(learned.run(access[state] + [action])) == list(learned.run(access[state])) + [output] for state, mapping in target["transitions"].items() for action, (_, output) in mapping.items())
+    learned = Model.from_dict(model)
+    if tuple(target["alphabet"]) != learned.alphabet: return False
+    positions = {action: index for index, action in enumerate(learned.alphabet)}
+    queue = deque([("s0", 0)]); seen = {("s0", 0)}
+    while queue:
+        target_state, learned_state = queue.popleft()
+        for action in target["alphabet"]:
+            target_next, target_output = target["transitions"][target_state][action]
+            learned_next, learned_output = learned.transitions[learned_state][positions[action]]
+            if target_output != learned_output: return False
+            pair = (target_next, learned_next)
+            if pair not in seen: seen.add(pair); queue.append(pair)
+    return True
 
 
 def main():
