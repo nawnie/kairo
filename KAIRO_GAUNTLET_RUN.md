@@ -134,3 +134,8 @@ Hard-variant coverage then found that dynamic JavaScript imports
 (`import("...")`) were missed entirely. Both capability and dependency paths
 now detect guarded dynamic imports, and a quoted fake dynamic-import string is
 still ignored.
+
+The Python side-effect probe found that arbitrary custom methods such as
+`Cache().unlink()` were being labeled as path deletion. Method-based path
+operations are now constrained to recognizable `Path`/`PurePath` constructors;
+real `Path(...).unlink()` evidence remains covered.

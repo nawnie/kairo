@@ -97,6 +97,18 @@ def _python_operations(tree):
         elif isinstance(item, ast.ImportFrom):
             for alias in item.names:
                 aliases[alias.asname or alias.name] = f"{item.module or ''}.{alias.name}".strip(".")
+
+    def is_path_constructor(expression):
+        if not isinstance(expression, ast.Call):
+            return False
+        constructor = expression.func
+        if isinstance(constructor, ast.Name):
+            target = aliases.get(constructor.id, constructor.id)
+            return target.split(".")[-1] in {"Path", "PurePath"}
+        if isinstance(constructor, ast.Attribute):
+            return constructor.attr in {"Path", "PurePath"}
+        return False
+
     for node in ast.walk(tree):
         if not isinstance(node, ast.Call):
             continue
@@ -108,7 +120,7 @@ def _python_operations(tree):
             operation = qualified.get((module.split(".", 1)[0], member))
             if operation:
                 found.append(operation)
-        elif isinstance(node.func, ast.Attribute) and node.func.attr in methods:
+        elif isinstance(node.func, ast.Attribute) and node.func.attr in methods and is_path_constructor(node.func.value):
             found.append(methods[node.func.attr])
         elif isinstance(node.func, ast.Attribute):
             receiver = ast.unparse(node.func.value) if hasattr(ast, "unparse") else ""

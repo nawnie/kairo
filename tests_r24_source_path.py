@@ -167,6 +167,16 @@ class SourcePathTests(unittest.TestCase):
             result = summarize_path(root)
             self.assertNotIn("operations:", " ".join(item["text"] for item in result["evidence"]))
 
+    def test_custom_python_methods_are_not_reported_as_path_operations(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.py").write_text(
+                "class Cache:\n    def unlink(self):\n        return 'evict'\n\ndef run():\n    return Cache().unlink()\n",
+                encoding="utf-8",
+            )
+            result = summarize_path(root)
+            self.assertNotIn("deletes paths", result["answer"])
+
     def test_program_summary_resolves_import_aliases(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
