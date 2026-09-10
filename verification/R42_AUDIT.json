@@ -1,0 +1,130 @@
+{
+  "experiment": "R42",
+  "tasks": [
+    {
+      "policy": "cold",
+      "case": "S1",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3575
+    },
+    {
+      "policy": "cold",
+      "case": "S2",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3366
+    },
+    {
+      "policy": "cold",
+      "case": "S3",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3578
+    },
+    {
+      "policy": "retain",
+      "case": "S1",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3575
+    },
+    {
+      "policy": "retain",
+      "case": "S2",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3493
+    },
+    {
+      "policy": "retain",
+      "case": "S3",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3691
+    },
+    {
+      "policy": "random_challenges",
+      "case": "S1",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3591
+    },
+    {
+      "policy": "random_challenges",
+      "case": "S2",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3509
+    },
+    {
+      "policy": "random_challenges",
+      "case": "S3",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3707
+    },
+    {
+      "policy": "plan_challenges",
+      "case": "S1",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3591
+    },
+    {
+      "policy": "plan_challenges",
+      "case": "S2",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3509
+    },
+    {
+      "policy": "plan_challenges",
+      "case": "S3",
+      "status": "success",
+      "artifact": true,
+      "exact": true,
+      "target_states": 18,
+      "replay": true,
+      "queries": 3707
+    }
+  ],
+  "task_count": 12,
+  "artifacts": 12,
+  "exact": 12,
+  "replays": 12,
+  "goal_achieved": false
+}
