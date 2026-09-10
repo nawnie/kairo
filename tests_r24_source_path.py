@@ -68,6 +68,14 @@ class SourcePathTests(unittest.TestCase):
             self.assertIn("Processes reports", result["answer"])
             self.assertIn("main.py", result["answer"])
 
+    def test_program_summary_reports_code_operations(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.py").write_text("def run():\n    with open('input.txt') as stream:\n        return stream.read()\n\nif __name__ == '__main__':\n    run()\n", encoding="utf-8")
+            result = summarize_path(root)
+            self.assertIn("open", result["answer"])
+            self.assertIn("__main__", " ".join(item["text"] for item in result["evidence"]))
+
 
 if __name__ == "__main__":
     unittest.main()

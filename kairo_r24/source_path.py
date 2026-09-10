@@ -42,6 +42,7 @@ def _python_summary(path: Path):
     imports = []
     functions = []
     classes = []
+    behaviors = []
     for node in ast.walk(tree):
         if isinstance(node, ast.Import):
             imports.extend(alias.name for alias in node.names)
@@ -51,12 +52,18 @@ def _python_summary(path: Path):
             functions.append(node.name)
         elif isinstance(node, ast.ClassDef):
             classes.append(node.name)
+        elif isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in {"open", "connect", "urlopen", "Popen", "run", "system", "loads", "dumps"}:
+            behaviors.append(node.func.id)
     if imports:
         items.append(SourceEvidence(str(path), 1, "imports: " + ", ".join(sorted(set(imports)))))
     if classes:
         items.append(SourceEvidence(str(path), 1, "classes: " + ", ".join(sorted(set(classes)))))
     if functions:
         items.append(SourceEvidence(str(path), 1, "functions: " + ", ".join(sorted(set(functions)))))
+    if behaviors:
+        items.append(SourceEvidence(str(path), 1, "operations: " + ", ".join(sorted(set(behaviors)))))
+    if any(isinstance(node, ast.If) and isinstance(node.test, ast.Compare) and isinstance(node.test.left, ast.Name) and node.test.left.id == "__name__" for node in tree.body):
+        items.append(SourceEvidence(str(path), 1, "has __main__ entry-point guard"))
     return items, ast.get_docstring(tree, clean=True)
 
 
@@ -70,6 +77,7 @@ def summarize_path(program_path):
     docs = []
     entrypoints = []
     metadata = []
+    operations = set()
     for path in files:
         relative = path.name if root.is_file() else str(path.relative_to(root))
         if path.suffix.lower() in {".md", ".txt", ".rst"} and path.name.lower() in {"readme.md", "readme.txt", "readme.rst", "description.md"}:
@@ -81,6 +89,9 @@ def summarize_path(program_path):
         elif path.suffix.lower() == ".py":
             items, docstring = _python_summary(path)
             evidence.extend(items)
+            for item in items:
+                if item.text.startswith("operations:"):
+                    operations.update(item.text.split(":", 1)[1].split(", "))
             if docstring:
                 descriptions.append(docstring.splitlines()[0])
             if path.name in {"main.py", "__main__.py", "cli.py"}:
@@ -119,6 +130,8 @@ def summarize_path(program_path):
         parts.append("Package metadata: " + " ".join(metadata[:4]))
     if entrypoints:
         parts.append("Likely entry-point files include: " + ", ".join(entrypoints[:8]))
+    if operations:
+        parts.append("Source-visible operations include: " + ", ".join(sorted(operations)) + ".")
     python_count = sum(path.suffix.lower() == ".py" for path in files)
     if python_count:
         parts.append(f"The supplied location contains {python_count} Python source file(s) summarized by their imports, classes, and functions.")
