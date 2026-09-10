@@ -113,6 +113,32 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["status"], "answered")
             self.assertIn("Source-visible operations: open", result["answer"])
 
+    def test_program_summary_reports_path_deletion_and_downgrades_docs(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "README.md").write_text(
+                "This program encrypts customer files and stores them safely.\n",
+                encoding="utf-8",
+            )
+            (root / "main.py").write_text(
+                "from pathlib import Path\n\ndef run(path):\n    return Path(path).unlink()\n",
+                encoding="utf-8",
+            )
+            result = summarize_path(root)
+            self.assertIn("Source code shows operations: unlink (deletes paths)", result["answer"])
+            self.assertIn("Documentation claim not independently corroborated", result["answer"])
+            self.assertNotIn("Project documentation says:", result["answer"])
+
+    def test_function_summary_reports_attribute_side_effects(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "tool.py").write_text(
+                "from pathlib import Path\n\ndef erase(path):\n    return Path(path).unlink()\n",
+                encoding="utf-8",
+            )
+            result = Questioner(root, {}).ask("what does the function erase do?")
+            self.assertIn("unlink (deletes paths)", result["answer"])
+
     def test_program_summary_includes_metadata_and_entrypoint(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

@@ -50,3 +50,16 @@ claimed that a program encrypted files, while the Python source called
 claim, did not report the deletion operation, and mislabeled the function name
 `run` as an operation. This is a false-supported source-summary result and is
 the first concrete gauntlet failure requiring repair before broader claims.
+
+## Repair checkpoint
+
+The source summarizer was repaired after that failure. Python AST analysis now
+detects method-based effects including `unlink`, `remove`, `rmdir`, file writes,
+directory creation, and path moves. Function names are no longer counted as
+operations. When documentation is not corroborated by detected source
+operations, the answer leads with code-derived behavior and labels the
+documentation as an unverified claim.
+
+Regression verification: 34 R24/path tests passed and 12 R23 tests passed. The
+same adversarial program now reports `unlink (deletes paths)` first and marks
+the encryption README as not independently corroborated.

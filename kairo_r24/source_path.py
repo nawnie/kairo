@@ -43,7 +43,7 @@ def _python_summary(path: Path):
     imports = []
     functions = []
     classes = []
-    behaviors = []
+    behaviors = _python_operations(tree)
     for node in ast.walk(tree):
         if isinstance(node, ast.Import):
             imports.extend(alias.name for alias in node.names)
@@ -53,8 +53,6 @@ def _python_summary(path: Path):
             functions.append(node.name)
         elif isinstance(node, ast.ClassDef):
             classes.append(node.name)
-        elif isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in {"open", "connect", "urlopen", "Popen", "run", "system", "loads", "dumps"}:
-            behaviors.append(node.func.id)
     if imports:
         items.append(SourceEvidence(str(path), 1, "imports: " + ", ".join(sorted(set(imports)))))
     if classes:
@@ -66,6 +64,30 @@ def _python_summary(path: Path):
     if any(isinstance(node, ast.If) and isinstance(node.test, ast.Compare) and isinstance(node.test.left, ast.Name) and node.test.left.id == "__name__" for node in tree.body):
         items.append(SourceEvidence(str(path), 1, "has __main__ entry-point guard"))
     return items, ast.get_docstring(tree, clean=True)
+
+
+def _python_operations(tree):
+    direct = {"open", "connect", "urlopen", "Popen", "system", "loads", "dumps"}
+    methods = {
+        "unlink": "unlink (deletes paths)",
+        "remove": "remove (deletes paths)",
+        "rmdir": "rmdir (deletes directories)",
+        "rmtree": "rmtree (deletes directories)",
+        "write_text": "write_text (writes files)",
+        "write_bytes": "write_bytes (writes files)",
+        "mkdir": "mkdir (creates directories)",
+        "rename": "rename (moves paths)",
+        "replace": "replace (moves paths)",
+    }
+    found = []
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
+        if isinstance(node.func, ast.Name) and node.func.id in direct:
+            found.append(node.func.id)
+        elif isinstance(node.func, ast.Attribute) and node.func.attr in methods:
+            found.append(methods[node.func.attr])
+    return found
 
 
 def _text_source_summary(path: Path):
@@ -104,7 +126,7 @@ def summarize_path(program_path):
             evidence.extend(items)
             for item in items:
                 if item.text.startswith("operations:"):
-                    operations.update(item.text.split(":", 1)[1].split(", "))
+                    operations.update(value.strip() for value in item.text.split(":", 1)[1].split(", "))
             if docstring:
                 descriptions.append(docstring.splitlines()[0])
             if path.name in {"main.py", "__main__.py", "cli.py"}:
@@ -138,16 +160,17 @@ def summarize_path(program_path):
     if not files:
         return {"status": "abstain", "reason": "no_readable_files", "answer": None, "evidence": []}
     parts = []
+    if operations:
+        parts.append("Source code shows operations: " + ", ".join(sorted(operations)) + ".")
     if docs:
-        parts.append("Project documentation says: " + " ".join(docs[:3]))
+        label = "Documentation claim not independently corroborated by source operations: " if operations else "Project documentation says: "
+        parts.append(label + " ".join(docs[:3]))
     if descriptions:
         parts.append("Python module descriptions: " + " ".join(descriptions[:5]))
     if metadata:
         parts.append("Package metadata: " + " ".join(metadata[:4]))
     if entrypoints:
         parts.append("Likely entry-point files include: " + ", ".join(entrypoints[:8]))
-    if operations:
-        parts.append("Source-visible operations include: " + ", ".join(sorted(operations)) + ".")
     python_count = sum(path.suffix.lower() == ".py" for path in files)
     if python_count:
         parts.append(f"The supplied location contains {python_count} Python source file(s) summarized by their imports, classes, and functions.")
@@ -180,6 +203,7 @@ def summarize_function(program_path, function_name):
                                 if isinstance(call, ast.Call) and isinstance(call.func, ast.Name)})
                 operation_names = {"open", "connect", "urlopen", "Popen", "run", "system", "unlink", "remove", "write_text", "write_bytes"}
                 operations = sorted(set(calls) & operation_names)
+                operations = sorted(set(operations) | set(_python_operations(node)))
                 returns = [ast.get_source_segment(source, item.value) for item in ast.walk(node)
                            if isinstance(item, ast.Return) and item.value is not None]
                 evidence = [SourceEvidence(str(path), node.lineno, f"def {node.name}(...)")]
