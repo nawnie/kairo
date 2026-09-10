@@ -1,0 +1,2326 @@
+{
+  "all_experiment_tasks_audited": 36,
+  "goal_achieved": false,
+  "lanes": {
+    "holdout_depth2": {
+      "cold": {
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "exact_models": 6,
+        "execution_actions": 48,
+        "goal_achieved": false,
+        "identical_reproduction_files": 61,
+        "input_symbols": 48308,
+        "policy": "cold",
+        "queries": 7900,
+        "successes": 6,
+        "tasks": [
+          {
+            "acquisition_queries": 1309,
+            "artifact_verified": true,
+            "case": "H1",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8006,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 1310,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1309,
+            "artifact_verified": true,
+            "case": "H2",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8006,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 1310,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1322,
+            "artifact_verified": true,
+            "case": "H3",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8095,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 1323,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1322,
+            "artifact_verified": true,
+            "case": "H4",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8095,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 1323,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1316,
+            "artifact_verified": true,
+            "case": "H5",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8053,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 1317,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1316,
+            "artifact_verified": true,
+            "case": "H6",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8053,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 1317,
+            "status": "success",
+            "validation_queries": 1
+          }
+        ]
+      },
+      "retain": {
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "exact_models": 6,
+        "execution_actions": 48,
+        "goal_achieved": false,
+        "identical_reproduction_files": 61,
+        "input_symbols": 24787,
+        "policy": "retain",
+        "queries": 4053,
+        "successes": 6,
+        "tasks": [
+          {
+            "acquisition_queries": 1309,
+            "artifact_verified": true,
+            "case": "H1",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8006,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 1310,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 0,
+            "artifact_verified": true,
+            "case": "H2",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 1,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1368,
+            "artifact_verified": true,
+            "case": "H3",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8390,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 1370,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 0,
+            "artifact_verified": true,
+            "case": "H4",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 1,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1368,
+            "artifact_verified": true,
+            "case": "H5",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8367,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 1370,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 0,
+            "artifact_verified": true,
+            "case": "H6",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 1,
+            "status": "success",
+            "validation_queries": 1
+          }
+        ]
+      }
+    },
+    "r40_depth1": {
+      "cold": {
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "exact_models": 0,
+        "execution_actions": 26,
+        "goal_achieved": false,
+        "identical_reproduction_files": 31,
+        "input_symbols": 6077,
+        "policy": "cold",
+        "queries": 1116,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2027,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 372,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2027,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 372,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 6,
+            "final_equivalent": false,
+            "input_symbols": 2023,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 372,
+            "status": "success",
+            "validation_queries": 1
+          }
+        ]
+      },
+      "plan_challenges": {
+        "challenge_queries": 43,
+        "challenge_symbols": 366,
+        "exact_models": 0,
+        "execution_actions": 26,
+        "goal_achieved": false,
+        "identical_reproduction_files": 31,
+        "input_symbols": 6713,
+        "policy": "plan_challenges",
+        "queries": 1215,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 16,
+            "challenge_symbols": 153,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2180,
+            "mismatches": 0,
+            "policy": "plan_challenges",
+            "post_success_repair": false,
+            "queries": 388,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 16,
+            "challenge_symbols": 153,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2319,
+            "mismatches": 0,
+            "policy": "plan_challenges",
+            "post_success_repair": false,
+            "queries": 416,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 11,
+            "challenge_symbols": 60,
+            "execution_actions": 6,
+            "final_equivalent": false,
+            "input_symbols": 2214,
+            "mismatches": 0,
+            "policy": "plan_challenges",
+            "post_success_repair": false,
+            "queries": 411,
+            "status": "success",
+            "validation_queries": 2
+          }
+        ]
+      },
+      "random_challenges": {
+        "challenge_queries": 43,
+        "challenge_symbols": 366,
+        "exact_models": 0,
+        "execution_actions": 26,
+        "goal_achieved": false,
+        "identical_reproduction_files": 31,
+        "input_symbols": 6713,
+        "policy": "random_challenges",
+        "queries": 1215,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 16,
+            "challenge_symbols": 153,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2180,
+            "mismatches": 0,
+            "policy": "random_challenges",
+            "post_success_repair": false,
+            "queries": 388,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 16,
+            "challenge_symbols": 153,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2319,
+            "mismatches": 0,
+            "policy": "random_challenges",
+            "post_success_repair": false,
+            "queries": 416,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 11,
+            "challenge_symbols": 60,
+            "execution_actions": 6,
+            "final_equivalent": false,
+            "input_symbols": 2214,
+            "mismatches": 0,
+            "policy": "random_challenges",
+            "post_success_repair": false,
+            "queries": 411,
+            "status": "success",
+            "validation_queries": 2
+          }
+        ]
+      },
+      "retain": {
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "exact_models": 0,
+        "execution_actions": 26,
+        "goal_achieved": false,
+        "identical_reproduction_files": 31,
+        "input_symbols": 6347,
+        "policy": "retain",
+        "queries": 1172,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2027,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 372,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2166,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 400,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 6,
+            "final_equivalent": false,
+            "input_symbols": 2154,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 400,
+            "status": "success",
+            "validation_queries": 2
+          }
+        ]
+      }
+    },
+    "r40_depth2": {
+      "cold": {
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "exact_models": 3,
+        "execution_actions": 22,
+        "goal_achieved": false,
+        "identical_reproduction_files": 31,
+        "input_symbols": 24311,
+        "policy": "cold",
+        "queries": 3971,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 1308,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8004,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 1309,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1327,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8134,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 1328,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1333,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 6,
+            "final_equivalent": true,
+            "input_symbols": 8173,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 1334,
+            "status": "success",
+            "validation_queries": 1
+          }
+        ]
+      },
+      "plan_challenges": {
+        "challenge_queries": 41,
+        "challenge_symbols": 284,
+        "exact_models": 3,
+        "execution_actions": 22,
+        "goal_achieved": false,
+        "identical_reproduction_files": 31,
+        "input_symbols": 25224,
+        "policy": "plan_challenges",
+        "queries": 4119,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 1308,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 15,
+            "challenge_symbols": 112,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8116,
+            "mismatches": 0,
+            "policy": "plan_challenges",
+            "post_success_repair": false,
+            "queries": 1324,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1380,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 15,
+            "challenge_symbols": 112,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8564,
+            "mismatches": 0,
+            "policy": "plan_challenges",
+            "post_success_repair": false,
+            "queries": 1397,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 1385,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 11,
+            "challenge_symbols": 60,
+            "execution_actions": 6,
+            "final_equivalent": true,
+            "input_symbols": 8544,
+            "mismatches": 0,
+            "policy": "plan_challenges",
+            "post_success_repair": false,
+            "queries": 1398,
+            "status": "success",
+            "validation_queries": 2
+          }
+        ]
+      },
+      "random_challenges": {
+        "challenge_queries": 41,
+        "challenge_symbols": 284,
+        "exact_models": 3,
+        "execution_actions": 22,
+        "goal_achieved": false,
+        "identical_reproduction_files": 31,
+        "input_symbols": 25224,
+        "policy": "random_challenges",
+        "queries": 4119,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 1308,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 15,
+            "challenge_symbols": 112,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8116,
+            "mismatches": 0,
+            "policy": "random_challenges",
+            "post_success_repair": false,
+            "queries": 1324,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1380,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 15,
+            "challenge_symbols": 112,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8564,
+            "mismatches": 0,
+            "policy": "random_challenges",
+            "post_success_repair": false,
+            "queries": 1397,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 1385,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 11,
+            "challenge_symbols": 60,
+            "execution_actions": 6,
+            "final_equivalent": true,
+            "input_symbols": 8544,
+            "mismatches": 0,
+            "policy": "random_challenges",
+            "post_success_repair": false,
+            "queries": 1398,
+            "status": "success",
+            "validation_queries": 2
+          }
+        ]
+      },
+      "retain": {
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "exact_models": 3,
+        "execution_actions": 22,
+        "goal_achieved": false,
+        "identical_reproduction_files": 31,
+        "input_symbols": 24940,
+        "policy": "retain",
+        "queries": 4078,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 1308,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8004,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 1309,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 1380,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 8,
+            "final_equivalent": true,
+            "input_symbols": 8452,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 1382,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 1385,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 6,
+            "final_equivalent": true,
+            "input_symbols": 8484,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 1387,
+            "status": "success",
+            "validation_queries": 2
+          }
+        ]
+      }
+    }
+  },
+  "manifest_sha256": "e8068186b6a78d2163374278591b31f89ab754bb3bd7f24854b9248aee12adbc",
+  "original_r40": {
+    "cases": [
+      {
+        "acquisition_queries": 371,
+        "case": "E",
+        "challenge_lengths_identical": true,
+        "challenge_words_identical": false,
+        "complete_evaluation": true,
+        "decoded_witness": [
+          "open",
+          "begin",
+          "stage",
+          "commit",
+          "close",
+          "open",
+          "inspect"
+        ],
+        "learner_states": 6,
+        "minimal_target_states": 7,
+        "plan_result_sha256": "c024b5169495d930b5f6447226456becb06b6481a0b3cea0c3e4f0a3c8f3367c",
+        "random_result_sha256": "4d8c65096626b6d2ad145e0fe334100400a4278f15a2571f9503c40c1d980982",
+        "stop_status": "provisional_no_counterexample_in_bounded_probes",
+        "target_states": 7,
+        "witness": [
+          "op_3",
+          "op_5",
+          "op_0",
+          "op_4",
+          "op_1",
+          "op_3",
+          "op_2"
+        ]
+      },
+      {
+        "acquisition_queries": 371,
+        "case": "F",
+        "challenge_lengths_identical": true,
+        "challenge_words_identical": false,
+        "complete_evaluation": true,
+        "decoded_witness": [
+          "open",
+          "begin",
+          "stage",
+          "commit",
+          "close",
+          "open",
+          "inspect"
+        ],
+        "learner_states": 6,
+        "minimal_target_states": 7,
+        "plan_result_sha256": "e0d2334502535934273d68f302c01160f374bbe387156f86d2a3b852e0759792",
+        "random_result_sha256": "ba31abeb0120d9daa3ea7bfb8c4a0400c9577e33b563c989255205bc52b5d3b3",
+        "stop_status": "provisional_no_counterexample_in_bounded_probes",
+        "target_states": 7,
+        "witness": [
+          "op_4",
+          "op_2",
+          "op_3",
+          "op_6",
+          "op_5",
+          "op_4",
+          "op_1"
+        ]
+      },
+      {
+        "acquisition_queries": 371,
+        "case": "G",
+        "challenge_lengths_identical": true,
+        "challenge_words_identical": false,
+        "complete_evaluation": true,
+        "decoded_witness": [
+          "open",
+          "begin",
+          "stage",
+          "commit",
+          "close",
+          "open",
+          "inspect"
+        ],
+        "learner_states": 6,
+        "minimal_target_states": 7,
+        "plan_result_sha256": "1fb0195e5962b83994a779bdd69fe11d4b59adb51d12c8a537ac929a9457f9e8",
+        "random_result_sha256": "3ba3d516b7dd3e3284fb2f9b9645aa50e2e79ff979f44131802b1a5c8cc87f16",
+        "stop_status": "provisional_no_counterexample_in_bounded_probes",
+        "target_states": 7,
+        "witness": [
+          "op_0",
+          "op_2",
+          "op_1",
+          "op_4",
+          "op_6",
+          "op_0",
+          "op_5"
+        ]
+      }
+    ],
+    "goal_achieved_scope": "benchmark.py writes False unconditionally for the full research objective",
+    "summaries": {
+      "cold": {
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "exact_models": 0,
+        "execution_actions": 26,
+        "goal_achieved": false,
+        "input_symbols": 6077,
+        "policy": "cold",
+        "queries": 1116,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2027,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 372,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2027,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 372,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 6,
+            "final_equivalent": false,
+            "input_symbols": 2023,
+            "mismatches": 0,
+            "policy": "cold",
+            "post_success_repair": false,
+            "queries": 372,
+            "status": "success",
+            "validation_queries": 1
+          }
+        ]
+      },
+      "plan_challenges": {
+        "challenge_queries": 43,
+        "challenge_symbols": 366,
+        "exact_models": 0,
+        "execution_actions": 26,
+        "goal_achieved": false,
+        "input_symbols": 6713,
+        "policy": "plan_challenges",
+        "queries": 1215,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 16,
+            "challenge_symbols": 153,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2180,
+            "mismatches": 0,
+            "policy": "plan_challenges",
+            "post_success_repair": false,
+            "queries": 388,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 16,
+            "challenge_symbols": 153,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2319,
+            "mismatches": 0,
+            "policy": "plan_challenges",
+            "post_success_repair": false,
+            "queries": 416,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 11,
+            "challenge_symbols": 60,
+            "execution_actions": 6,
+            "final_equivalent": false,
+            "input_symbols": 2214,
+            "mismatches": 0,
+            "policy": "plan_challenges",
+            "post_success_repair": false,
+            "queries": 411,
+            "status": "success",
+            "validation_queries": 2
+          }
+        ]
+      },
+      "random_challenges": {
+        "challenge_queries": 43,
+        "challenge_symbols": 366,
+        "exact_models": 0,
+        "execution_actions": 26,
+        "goal_achieved": false,
+        "input_symbols": 6713,
+        "policy": "random_challenges",
+        "queries": 1215,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 16,
+            "challenge_symbols": 153,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2180,
+            "mismatches": 0,
+            "policy": "random_challenges",
+            "post_success_repair": false,
+            "queries": 388,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 16,
+            "challenge_symbols": 153,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2319,
+            "mismatches": 0,
+            "policy": "random_challenges",
+            "post_success_repair": false,
+            "queries": 416,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 11,
+            "challenge_symbols": 60,
+            "execution_actions": 6,
+            "final_equivalent": false,
+            "input_symbols": 2214,
+            "mismatches": 0,
+            "policy": "random_challenges",
+            "post_success_repair": false,
+            "queries": 411,
+            "status": "success",
+            "validation_queries": 2
+          }
+        ]
+      },
+      "retain": {
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "exact_models": 0,
+        "execution_actions": 26,
+        "goal_achieved": false,
+        "input_symbols": 6347,
+        "policy": "retain",
+        "queries": 1172,
+        "successes": 3,
+        "tasks": [
+          {
+            "acquisition_queries": 371,
+            "artifact_verified": true,
+            "case": "E",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2027,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 372,
+            "status": "success",
+            "validation_queries": 1
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "F",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 10,
+            "final_equivalent": false,
+            "input_symbols": 2166,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 400,
+            "status": "success",
+            "validation_queries": 2
+          },
+          {
+            "acquisition_queries": 398,
+            "artifact_verified": true,
+            "case": "G",
+            "challenge_queries": 0,
+            "challenge_symbols": 0,
+            "execution_actions": 6,
+            "final_equivalent": false,
+            "input_symbols": 2154,
+            "mismatches": 0,
+            "policy": "retain",
+            "post_success_repair": false,
+            "queries": 400,
+            "status": "success",
+            "validation_queries": 2
+          }
+        ]
+      }
+    }
+  },
+  "prior_files_preserved": 5789,
+  "source_freeze_verified": true,
+  "tasks": [
+    {
+      "case": "E",
+      "database": {
+        "integrity": "ok",
+        "rows": 7,
+        "schema_verified": true,
+        "sha256": "0518417ad82dec80a7bd3f01491a55fd7c3f503147a0fe787add290ddcee14ec"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "cold",
+      "proof": {
+        "counterexample": [
+          "op_3",
+          "op_5",
+          "op_0",
+          "op_4",
+          "op_1",
+          "op_3",
+          "op_2"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 8,
+        "transitions_checked": 52
+      },
+      "replay": {
+        "acquisition_queries": 371,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 385,
+        "execution_actions": 10,
+        "input_symbols": 2027,
+        "queries": 372,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "F",
+      "database": {
+        "integrity": "ok",
+        "rows": 5,
+        "schema_verified": true,
+        "sha256": "eac43c40db5f9184a3a5f358eeb2e312c30b432f2aab393bd3f9ae8b9e258e3d"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "cold",
+      "proof": {
+        "counterexample": [
+          "op_4",
+          "op_2",
+          "op_3",
+          "op_6",
+          "op_5",
+          "op_4",
+          "op_1"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 8,
+        "transitions_checked": 51
+      },
+      "replay": {
+        "acquisition_queries": 371,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 385,
+        "execution_actions": 10,
+        "input_symbols": 2027,
+        "queries": 372,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "G",
+      "database": {
+        "integrity": "ok",
+        "rows": 9,
+        "schema_verified": true,
+        "sha256": "559b3e564376662c50e32a8eab591f67121c3aa9ed39ab0fdfb48724282f5208"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "cold",
+      "proof": {
+        "counterexample": [
+          "op_0",
+          "op_2",
+          "op_1",
+          "op_4",
+          "op_6",
+          "op_0",
+          "op_5"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 9,
+        "transitions_checked": 55
+      },
+      "replay": {
+        "acquisition_queries": 371,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 381,
+        "execution_actions": 6,
+        "input_symbols": 2023,
+        "queries": 372,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "E",
+      "database": {
+        "integrity": "ok",
+        "rows": 7,
+        "schema_verified": true,
+        "sha256": "0518417ad82dec80a7bd3f01491a55fd7c3f503147a0fe787add290ddcee14ec"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "retain",
+      "proof": {
+        "counterexample": [
+          "op_3",
+          "op_5",
+          "op_0",
+          "op_4",
+          "op_1",
+          "op_3",
+          "op_2"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 8,
+        "transitions_checked": 52
+      },
+      "replay": {
+        "acquisition_queries": 371,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 386,
+        "execution_actions": 10,
+        "input_symbols": 2027,
+        "queries": 372,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "F",
+      "database": {
+        "integrity": "ok",
+        "rows": 5,
+        "schema_verified": true,
+        "sha256": "eac43c40db5f9184a3a5f358eeb2e312c30b432f2aab393bd3f9ae8b9e258e3d"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "retain",
+      "proof": {
+        "counterexample": [
+          "op_4",
+          "op_2",
+          "op_3",
+          "op_6",
+          "op_5",
+          "op_4",
+          "op_1"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 8,
+        "transitions_checked": 51
+      },
+      "replay": {
+        "acquisition_queries": 398,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 414,
+        "execution_actions": 10,
+        "input_symbols": 2166,
+        "queries": 400,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "G",
+      "database": {
+        "integrity": "ok",
+        "rows": 9,
+        "schema_verified": true,
+        "sha256": "559b3e564376662c50e32a8eab591f67121c3aa9ed39ab0fdfb48724282f5208"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "retain",
+      "proof": {
+        "counterexample": [
+          "op_0",
+          "op_2",
+          "op_1",
+          "op_4",
+          "op_6",
+          "op_0",
+          "op_5"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 9,
+        "transitions_checked": 55
+      },
+      "replay": {
+        "acquisition_queries": 398,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 410,
+        "execution_actions": 6,
+        "input_symbols": 2154,
+        "queries": 400,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "E",
+      "database": {
+        "integrity": "ok",
+        "rows": 7,
+        "schema_verified": true,
+        "sha256": "0518417ad82dec80a7bd3f01491a55fd7c3f503147a0fe787add290ddcee14ec"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "random_challenges",
+      "proof": {
+        "counterexample": [
+          "op_3",
+          "op_5",
+          "op_0",
+          "op_4",
+          "op_1",
+          "op_3",
+          "op_2"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 8,
+        "transitions_checked": 52
+      },
+      "replay": {
+        "acquisition_queries": 371,
+        "artifact_reproduced": true,
+        "challenge_queries": 16,
+        "challenge_symbols": 153,
+        "checkpoint_unchanged": true,
+        "events_replayed": 402,
+        "execution_actions": 10,
+        "input_symbols": 2180,
+        "queries": 388,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "F",
+      "database": {
+        "integrity": "ok",
+        "rows": 5,
+        "schema_verified": true,
+        "sha256": "eac43c40db5f9184a3a5f358eeb2e312c30b432f2aab393bd3f9ae8b9e258e3d"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "random_challenges",
+      "proof": {
+        "counterexample": [
+          "op_4",
+          "op_2",
+          "op_3",
+          "op_6",
+          "op_5",
+          "op_4",
+          "op_1"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 8,
+        "transitions_checked": 51
+      },
+      "replay": {
+        "acquisition_queries": 398,
+        "artifact_reproduced": true,
+        "challenge_queries": 16,
+        "challenge_symbols": 153,
+        "checkpoint_unchanged": true,
+        "events_replayed": 430,
+        "execution_actions": 10,
+        "input_symbols": 2319,
+        "queries": 416,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "G",
+      "database": {
+        "integrity": "ok",
+        "rows": 9,
+        "schema_verified": true,
+        "sha256": "559b3e564376662c50e32a8eab591f67121c3aa9ed39ab0fdfb48724282f5208"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "random_challenges",
+      "proof": {
+        "counterexample": [
+          "op_0",
+          "op_2",
+          "op_1",
+          "op_4",
+          "op_6",
+          "op_0",
+          "op_5"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 9,
+        "transitions_checked": 55
+      },
+      "replay": {
+        "acquisition_queries": 398,
+        "artifact_reproduced": true,
+        "challenge_queries": 11,
+        "challenge_symbols": 60,
+        "checkpoint_unchanged": true,
+        "events_replayed": 421,
+        "execution_actions": 6,
+        "input_symbols": 2214,
+        "queries": 411,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "E",
+      "database": {
+        "integrity": "ok",
+        "rows": 7,
+        "schema_verified": true,
+        "sha256": "0518417ad82dec80a7bd3f01491a55fd7c3f503147a0fe787add290ddcee14ec"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "plan_challenges",
+      "proof": {
+        "counterexample": [
+          "op_3",
+          "op_5",
+          "op_0",
+          "op_4",
+          "op_1",
+          "op_3",
+          "op_2"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 8,
+        "transitions_checked": 52
+      },
+      "replay": {
+        "acquisition_queries": 371,
+        "artifact_reproduced": true,
+        "challenge_queries": 16,
+        "challenge_symbols": 153,
+        "checkpoint_unchanged": true,
+        "events_replayed": 402,
+        "execution_actions": 10,
+        "input_symbols": 2180,
+        "queries": 388,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "F",
+      "database": {
+        "integrity": "ok",
+        "rows": 5,
+        "schema_verified": true,
+        "sha256": "eac43c40db5f9184a3a5f358eeb2e312c30b432f2aab393bd3f9ae8b9e258e3d"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "plan_challenges",
+      "proof": {
+        "counterexample": [
+          "op_4",
+          "op_2",
+          "op_3",
+          "op_6",
+          "op_5",
+          "op_4",
+          "op_1"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 8,
+        "transitions_checked": 51
+      },
+      "replay": {
+        "acquisition_queries": 398,
+        "artifact_reproduced": true,
+        "challenge_queries": 16,
+        "challenge_symbols": 153,
+        "checkpoint_unchanged": true,
+        "events_replayed": 430,
+        "execution_actions": 10,
+        "input_symbols": 2319,
+        "queries": 416,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "G",
+      "database": {
+        "integrity": "ok",
+        "rows": 9,
+        "schema_verified": true,
+        "sha256": "559b3e564376662c50e32a8eab591f67121c3aa9ed39ab0fdfb48724282f5208"
+      },
+      "lane": "r40_depth1",
+      "minimal_target_states": 7,
+      "model_states": 6,
+      "policy": "plan_challenges",
+      "proof": {
+        "counterexample": [
+          "op_0",
+          "op_2",
+          "op_1",
+          "op_4",
+          "op_6",
+          "op_0",
+          "op_5"
+        ],
+        "equivalent": false,
+        "reachable_pairs": 9,
+        "transitions_checked": 55
+      },
+      "replay": {
+        "acquisition_queries": 398,
+        "artifact_reproduced": true,
+        "challenge_queries": 11,
+        "challenge_symbols": 60,
+        "checkpoint_unchanged": true,
+        "events_replayed": 421,
+        "execution_actions": 6,
+        "input_symbols": 2214,
+        "queries": 411,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "E",
+      "database": {
+        "integrity": "ok",
+        "rows": 7,
+        "schema_verified": true,
+        "sha256": "0518417ad82dec80a7bd3f01491a55fd7c3f503147a0fe787add290ddcee14ec"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "cold",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1308,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1320,
+        "execution_actions": 8,
+        "input_symbols": 8004,
+        "queries": 1309,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "F",
+      "database": {
+        "integrity": "ok",
+        "rows": 5,
+        "schema_verified": true,
+        "sha256": "eac43c40db5f9184a3a5f358eeb2e312c30b432f2aab393bd3f9ae8b9e258e3d"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "cold",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1327,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1339,
+        "execution_actions": 8,
+        "input_symbols": 8134,
+        "queries": 1328,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "G",
+      "database": {
+        "integrity": "ok",
+        "rows": 9,
+        "schema_verified": true,
+        "sha256": "559b3e564376662c50e32a8eab591f67121c3aa9ed39ab0fdfb48724282f5208"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "cold",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1333,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1343,
+        "execution_actions": 6,
+        "input_symbols": 8173,
+        "queries": 1334,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "E",
+      "database": {
+        "integrity": "ok",
+        "rows": 7,
+        "schema_verified": true,
+        "sha256": "0518417ad82dec80a7bd3f01491a55fd7c3f503147a0fe787add290ddcee14ec"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "retain",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1308,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1321,
+        "execution_actions": 8,
+        "input_symbols": 8004,
+        "queries": 1309,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "F",
+      "database": {
+        "integrity": "ok",
+        "rows": 5,
+        "schema_verified": true,
+        "sha256": "eac43c40db5f9184a3a5f358eeb2e312c30b432f2aab393bd3f9ae8b9e258e3d"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "retain",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1380,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1394,
+        "execution_actions": 8,
+        "input_symbols": 8452,
+        "queries": 1382,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "G",
+      "database": {
+        "integrity": "ok",
+        "rows": 9,
+        "schema_verified": true,
+        "sha256": "559b3e564376662c50e32a8eab591f67121c3aa9ed39ab0fdfb48724282f5208"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "retain",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1385,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1397,
+        "execution_actions": 6,
+        "input_symbols": 8484,
+        "queries": 1387,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "E",
+      "database": {
+        "integrity": "ok",
+        "rows": 7,
+        "schema_verified": true,
+        "sha256": "0518417ad82dec80a7bd3f01491a55fd7c3f503147a0fe787add290ddcee14ec"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "random_challenges",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1308,
+        "artifact_reproduced": true,
+        "challenge_queries": 15,
+        "challenge_symbols": 112,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1336,
+        "execution_actions": 8,
+        "input_symbols": 8116,
+        "queries": 1324,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "F",
+      "database": {
+        "integrity": "ok",
+        "rows": 5,
+        "schema_verified": true,
+        "sha256": "eac43c40db5f9184a3a5f358eeb2e312c30b432f2aab393bd3f9ae8b9e258e3d"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "random_challenges",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1380,
+        "artifact_reproduced": true,
+        "challenge_queries": 15,
+        "challenge_symbols": 112,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1409,
+        "execution_actions": 8,
+        "input_symbols": 8564,
+        "queries": 1397,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "G",
+      "database": {
+        "integrity": "ok",
+        "rows": 9,
+        "schema_verified": true,
+        "sha256": "559b3e564376662c50e32a8eab591f67121c3aa9ed39ab0fdfb48724282f5208"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "random_challenges",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1385,
+        "artifact_reproduced": true,
+        "challenge_queries": 11,
+        "challenge_symbols": 60,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1408,
+        "execution_actions": 6,
+        "input_symbols": 8544,
+        "queries": 1398,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "E",
+      "database": {
+        "integrity": "ok",
+        "rows": 7,
+        "schema_verified": true,
+        "sha256": "0518417ad82dec80a7bd3f01491a55fd7c3f503147a0fe787add290ddcee14ec"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "plan_challenges",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1308,
+        "artifact_reproduced": true,
+        "challenge_queries": 15,
+        "challenge_symbols": 112,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1336,
+        "execution_actions": 8,
+        "input_symbols": 8116,
+        "queries": 1324,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "F",
+      "database": {
+        "integrity": "ok",
+        "rows": 5,
+        "schema_verified": true,
+        "sha256": "eac43c40db5f9184a3a5f358eeb2e312c30b432f2aab393bd3f9ae8b9e258e3d"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "plan_challenges",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1380,
+        "artifact_reproduced": true,
+        "challenge_queries": 15,
+        "challenge_symbols": 112,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1409,
+        "execution_actions": 8,
+        "input_symbols": 8564,
+        "queries": 1397,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "G",
+      "database": {
+        "integrity": "ok",
+        "rows": 9,
+        "schema_verified": true,
+        "sha256": "559b3e564376662c50e32a8eab591f67121c3aa9ed39ab0fdfb48724282f5208"
+      },
+      "lane": "r40_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "plan_challenges",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1385,
+        "artifact_reproduced": true,
+        "challenge_queries": 11,
+        "challenge_symbols": 60,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1408,
+        "execution_actions": 6,
+        "input_symbols": 8544,
+        "queries": 1398,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H1",
+      "database": {
+        "integrity": "ok",
+        "rows": 1,
+        "schema_verified": true,
+        "sha256": "a09a705299a113397cbb48da9b75373c1752d77b40afbd2b7b5256bb856175fa"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "cold",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1309,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1321,
+        "execution_actions": 8,
+        "input_symbols": 8006,
+        "queries": 1310,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H2",
+      "database": {
+        "integrity": "ok",
+        "rows": 17,
+        "schema_verified": true,
+        "sha256": "c061652023de983b1fe9408a39576c1f767ab80ca8c15be6ff9210d6cc342770"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "cold",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1309,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1321,
+        "execution_actions": 8,
+        "input_symbols": 8006,
+        "queries": 1310,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H3",
+      "database": {
+        "integrity": "ok",
+        "rows": 64,
+        "schema_verified": true,
+        "sha256": "7332d6342d03506ebd180f066fba551df640bdc3a052df8bc50e20e3392762d9"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "cold",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1322,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1334,
+        "execution_actions": 8,
+        "input_symbols": 8095,
+        "queries": 1323,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H4",
+      "database": {
+        "integrity": "ok",
+        "rows": 3,
+        "schema_verified": true,
+        "sha256": "b6abae2ce31e5f440ffaf00ba65bbdbbed8b209dff114a75d580b19837777a93"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "cold",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1322,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1334,
+        "execution_actions": 8,
+        "input_symbols": 8095,
+        "queries": 1323,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H5",
+      "database": {
+        "integrity": "ok",
+        "rows": 32,
+        "schema_verified": true,
+        "sha256": "1257d374ab63964b8075e907debb21156c09dde7f5aa5098d56b00d0c781dccb"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "cold",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1316,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1328,
+        "execution_actions": 8,
+        "input_symbols": 8053,
+        "queries": 1317,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H6",
+      "database": {
+        "integrity": "ok",
+        "rows": 127,
+        "schema_verified": true,
+        "sha256": "fd9e320e69a76aad2925b6bdc90b2750b54747e952abc99fabb01b380f514aeb"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "cold",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1316,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1328,
+        "execution_actions": 8,
+        "input_symbols": 8053,
+        "queries": 1317,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H1",
+      "database": {
+        "integrity": "ok",
+        "rows": 1,
+        "schema_verified": true,
+        "sha256": "a09a705299a113397cbb48da9b75373c1752d77b40afbd2b7b5256bb856175fa"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "retain",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1309,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1322,
+        "execution_actions": 8,
+        "input_symbols": 8006,
+        "queries": 1310,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H2",
+      "database": {
+        "integrity": "ok",
+        "rows": 17,
+        "schema_verified": true,
+        "sha256": "c061652023de983b1fe9408a39576c1f767ab80ca8c15be6ff9210d6cc342770"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "retain",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 0,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 11,
+        "execution_actions": 8,
+        "input_symbols": 8,
+        "queries": 1,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H3",
+      "database": {
+        "integrity": "ok",
+        "rows": 64,
+        "schema_verified": true,
+        "sha256": "7332d6342d03506ebd180f066fba551df640bdc3a052df8bc50e20e3392762d9"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "retain",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1368,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1382,
+        "execution_actions": 8,
+        "input_symbols": 8390,
+        "queries": 1370,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H4",
+      "database": {
+        "integrity": "ok",
+        "rows": 3,
+        "schema_verified": true,
+        "sha256": "b6abae2ce31e5f440ffaf00ba65bbdbbed8b209dff114a75d580b19837777a93"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "retain",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 0,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 11,
+        "execution_actions": 8,
+        "input_symbols": 8,
+        "queries": 1,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H5",
+      "database": {
+        "integrity": "ok",
+        "rows": 32,
+        "schema_verified": true,
+        "sha256": "1257d374ab63964b8075e907debb21156c09dde7f5aa5098d56b00d0c781dccb"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "retain",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 1368,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 1382,
+        "execution_actions": 8,
+        "input_symbols": 8367,
+        "queries": 1370,
+        "validation_queries": 2
+      },
+      "target_states": 7
+    },
+    {
+      "case": "H6",
+      "database": {
+        "integrity": "ok",
+        "rows": 127,
+        "schema_verified": true,
+        "sha256": "fd9e320e69a76aad2925b6bdc90b2750b54747e952abc99fabb01b380f514aeb"
+      },
+      "lane": "holdout_depth2",
+      "minimal_target_states": 7,
+      "model_states": 7,
+      "policy": "retain",
+      "proof": {
+        "counterexample": null,
+        "equivalent": true,
+        "reachable_pairs": 7,
+        "transitions_checked": 49
+      },
+      "replay": {
+        "acquisition_queries": 0,
+        "artifact_reproduced": true,
+        "challenge_queries": 0,
+        "challenge_symbols": 0,
+        "checkpoint_unchanged": true,
+        "events_replayed": 11,
+        "execution_actions": 8,
+        "input_symbols": 8,
+        "queries": 1,
+        "validation_queries": 1
+      },
+      "target_states": 7
+    }
+  ],
+  "verdict": "passed_integrity_and_reproduction_checks"
+}
