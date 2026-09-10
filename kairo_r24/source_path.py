@@ -395,3 +395,37 @@ def entrypoints(program_path):
         return {"status": "abstain", "reason": "no_conventional_entrypoint_found", "answer": None, "evidence": []}
     return {"status": "answered", "answer": "Likely entry point(s): " + ", ".join(found),
             "evidence": [item.as_dict() for item in evidence]}
+
+
+def execution_flow(program_path):
+    root = Path(program_path).expanduser().resolve()
+    graph = {}
+    evidence = {}
+    for path in _files(root):
+        if path.suffix.lower() != ".py":
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        try:
+            tree = ast.parse(text, filename=str(path))
+        except SyntaxError:
+            continue
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                graph[node.name] = [call.func.id for call in ast.walk(node) if isinstance(call, ast.Call) and isinstance(call.func, ast.Name)]
+                evidence[node.name] = SourceEvidence(str(path), node.lineno, f"def {node.name}(...)")
+    starts = [name for name in ("main", "run", "start") if name in graph]
+    if not starts:
+        return {"status": "abstain", "reason": "no_conventional_flow_entrypoint", "answer": None, "evidence": []}
+    order = []
+    queue = list(starts[:1])
+    seen = set(queue)
+    while queue and len(order) < 30:
+        current = queue.pop(0)
+        order.append(current)
+        for child in graph.get(current, []):
+            if child in graph and child not in seen:
+                seen.add(child)
+                queue.append(child)
+    return {"status": "answered", "answer": " -> ".join(order),
+            "evidence": [evidence[name].as_dict() for name in order],
+            "scope": "bounded static call flow; runtime control flow may differ"}

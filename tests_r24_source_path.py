@@ -77,6 +77,15 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["status"], "answered")
             self.assertEqual(result["answer"], "run -> convert -> save")
 
+    def test_questioner_answers_execution_flow(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.py").write_text("def save():\n    pass\n\ndef run():\n    return save()\n", encoding="utf-8")
+            questioner = Questioner(root, {})
+            result = questioner.ask("how does the execution flow work?")
+            self.assertEqual(result["status"], "answered")
+            self.assertEqual(result["answer"], "run -> save")
+
     def test_questioner_answers_function_parameters(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
