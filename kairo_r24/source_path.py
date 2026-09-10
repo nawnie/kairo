@@ -178,6 +178,8 @@ def summarize_function(program_path, function_name):
                 parameters = [arg.arg for arg in node.args.args]
                 calls = sorted({call.func.id for call in ast.walk(node)
                                 if isinstance(call, ast.Call) and isinstance(call.func, ast.Name)})
+                operation_names = {"open", "connect", "urlopen", "Popen", "run", "system", "unlink", "remove", "write_text", "write_bytes"}
+                operations = sorted(set(calls) & operation_names)
                 returns = [ast.get_source_segment(source, item.value) for item in ast.walk(node)
                            if isinstance(item, ast.Return) and item.value is not None]
                 evidence = [SourceEvidence(str(path), node.lineno, f"def {node.name}(...)")]
@@ -189,6 +191,8 @@ def summarize_function(program_path, function_name):
                     answer += f" Documentation: {doc.splitlines()[0]}"
                 if calls:
                     answer += f" It directly calls: {', '.join(calls)}."
+                if operations:
+                    answer += f" Source-visible operations: {', '.join(operations)}."
                 if returns:
                     answer += f" It has return expression(s): {', '.join(returns[:5])}."
                 else:

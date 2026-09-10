@@ -77,6 +77,15 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["status"], "answered")
             self.assertIn("source, destination", result["answer"])
 
+    def test_function_summary_reports_side_effect_operations(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "tool.py").write_text("def save(path):\n    return open(path, 'w')\n", encoding="utf-8")
+            questioner = Questioner(root, {})
+            result = questioner.ask("what does the function save do?")
+            self.assertEqual(result["status"], "answered")
+            self.assertIn("Source-visible operations: open", result["answer"])
+
     def test_program_summary_includes_metadata_and_entrypoint(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
