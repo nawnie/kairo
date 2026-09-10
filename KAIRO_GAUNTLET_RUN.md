@@ -90,3 +90,10 @@ The summary path was also tightened so a README claim is labeled as
 uncorroborated whenever source files are present, even if the source exposes no
 recognized operation. This prevents documentation-only descriptions from being
 silently promoted to source-backed behavior.
+
+A cross-language probe then found the same false-positive pattern in the
+JavaScript/TypeScript capability path: a string literal containing “socket” was
+reported as network use. Non-Python capability scanning now requires
+syntax-shaped evidence such as an import, `require`/`from`, or a call/member
+access, and regression coverage confirms both the string-literal negative and a
+real network import positive.

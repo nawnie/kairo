@@ -401,7 +401,7 @@ def search_question(program_path, question):
 
 def capability(program_path, name):
     groups = {
-        "network": {"requests", "urllib", "http", "socket", "urlopen", "websocket"},
+        "network": {"requests", "urllib", "http", "socket", "urlopen", "websocket", "net"},
         "file": {"open", "pathlib", "shutil", "os", "glob"},
         "database": {"sqlite", "sqlalchemy", "psycopg", "mysql", "connect"},
         "process": {"subprocess", "popen", "system", "os.system"},
@@ -417,21 +417,36 @@ def capability(program_path, name):
             continue
         if path.suffix.lower() not in {".js", ".jsx", ".ts", ".tsx", ".go", ".rs", ".java", ".cs", ".cpp", ".c", ".h"}:
             continue
-        try:
-            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
-        except OSError:
-            continue
-        for number, line in enumerate(lines, 1):
-            stripped = line.strip()
-            if not stripped or stripped.startswith(("#", "//", "/*", "*", "<!--")):
-                continue
-            lowered = line.lower()
-            if any(term in lowered for term in terms):
-                matches.append(SourceEvidence(str(path), number, line.strip()))
+        matches.extend(_text_capability_evidence(path, terms))
     answer = "yes" if matches else "no"
     return {"status": "answered", "answer": answer,
             "scope": "static source indicators only; does not prove runtime activity",
             "evidence": [item.as_dict() for item in matches[:40]], "matches": len(matches)}
+
+
+def _text_capability_evidence(path, terms):
+    try:
+        lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+    except OSError:
+        return []
+    matches = []
+    for number, line in enumerate(lines, 1):
+        stripped = line.strip()
+        if not stripped or stripped.startswith(("#", "//", "/*", "*", "<!--")):
+            continue
+        code = re.sub(r"(['\"])(?:\\.|(?!\1).)*\1", "", line).lower()
+        for term in terms:
+            escaped = re.escape(term.lower())
+            patterns = (
+                rf"\bimport\b[^;]*\b{escaped}\b",
+                rf"\bfrom\b[^;]*\b{escaped}\b",
+                rf"\brequire\s*\(\s*['\"][^'\"]*{escaped}",
+                rf"\b{escaped}\s*(?:\(|\.)",
+            )
+            if any(re.search(pattern, code) for pattern in patterns):
+                matches.append(SourceEvidence(str(path), number, stripped))
+                break
+    return matches
 
 
 def _python_capability_evidence(path, terms):
