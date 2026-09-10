@@ -185,6 +185,19 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["answer"], "yes")
             self.assertGreater(result["matches"], 0)
 
+    def test_capability_ignores_documentation_only_indicators(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "README.md").write_text(
+                "This offline tool has no network access. Socket security is discussed here.\n",
+                encoding="utf-8",
+            )
+            (root / "main.py").write_text("def run(value):\n    return value + 1\n", encoding="utf-8")
+            result = Questioner(root, {}).ask("does this program use the network?")
+            self.assertEqual(result["status"], "answered")
+            self.assertEqual(result["answer"], "no")
+            self.assertEqual(result["matches"], 0)
+
     def test_questioner_answers_dependencies_and_entrypoint(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

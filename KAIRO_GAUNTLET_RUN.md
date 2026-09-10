@@ -63,3 +63,13 @@ documentation as an unverified claim.
 Regression verification: 34 R24/path tests passed and 12 R23 tests passed. The
 same adversarial program now reports `unlink (deletes paths)` first and marks
 the encryption README as not independently corroborated.
+
+## Capability false-positive checkpoint
+
+A second adversarial probe put the word `Socket` only in a README while the
+Python program performed no network operation. The old capability scanner
+reported `yes` from the prose. Python capability detection is now AST-based;
+documentation and comments are excluded, while real imports and calls remain
+evidence. The repaired probe reports `no` with zero matches.
+
+Regression verification: 37 R24/path tests passed and 12 R23 tests passed.

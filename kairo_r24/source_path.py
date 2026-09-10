@@ -388,11 +388,19 @@ def capability(program_path, name):
     root = Path(program_path).expanduser().resolve()
     matches = []
     for path in _files(root):
+        if path.suffix.lower() == ".py":
+            matches.extend(_python_capability_evidence(path, terms))
+            continue
+        if path.suffix.lower() not in {".js", ".jsx", ".ts", ".tsx", ".go", ".rs", ".java", ".cs", ".cpp", ".c", ".h"}:
+            continue
         try:
             lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
         except OSError:
             continue
         for number, line in enumerate(lines, 1):
+            stripped = line.strip()
+            if not stripped or stripped.startswith(("#", "//", "/*", "*", "<!--")):
+                continue
             lowered = line.lower()
             if any(term in lowered for term in terms):
                 matches.append(SourceEvidence(str(path), number, line.strip()))
@@ -400,6 +408,31 @@ def capability(program_path, name):
     return {"status": "answered", "answer": answer,
             "scope": "static source indicators only; does not prove runtime activity",
             "evidence": [item.as_dict() for item in matches[:40]], "matches": len(matches)}
+
+
+def _python_capability_evidence(path, terms):
+    source = path.read_text(encoding="utf-8", errors="replace")
+    try:
+        tree = ast.parse(source, filename=str(path))
+    except SyntaxError:
+        return []
+    matches = []
+    for node in ast.walk(tree):
+        candidates = []
+        if isinstance(node, ast.Import):
+            candidates.extend(alias.name for alias in node.names)
+        elif isinstance(node, ast.ImportFrom):
+            candidates.append(node.module or "")
+        elif isinstance(node, ast.Call):
+            if isinstance(node.func, ast.Name):
+                candidates.append(node.func.id)
+            elif isinstance(node.func, ast.Attribute):
+                candidates.append(ast.unparse(node.func))
+        if candidates and any(term in candidate.lower() for candidate in candidates for term in terms):
+            line = source.splitlines()[max(node.lineno - 1, 0)].strip()
+            matches.append(SourceEvidence(str(path), node.lineno, line))
+    unique = {(item.path, item.line, item.text): item for item in matches}
+    return list(unique.values())
 
 
 def dependencies(program_path):
