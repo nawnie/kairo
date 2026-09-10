@@ -139,3 +139,8 @@ The Python side-effect probe found that arbitrary custom methods such as
 `Cache().unlink()` were being labeled as path deletion. Method-based path
 operations are now constrained to recognizable `Path`/`PurePath` constructors;
 real `Path(...).unlink()` evidence remains covered.
+
+The next lexical probe found that JavaScript regex literals could contain fake
+`require(...)` or `import(...)` text and still be reported. Regex literals are
+now masked after comments and quoted strings, with regression coverage for both
+capability and dependency scans.

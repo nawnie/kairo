@@ -309,6 +309,18 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["answer"], "no")
             self.assertEqual(result["matches"], 0)
 
+    def test_capability_ignores_javascript_regex_text(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.js").write_text(
+                'const pattern = /require("socket")/;\n',
+                encoding="utf-8",
+            )
+            result = Questioner(root, {}).ask("does this program use the network?")
+            self.assertEqual(result["status"], "answered")
+            self.assertEqual(result["answer"], "no")
+            self.assertEqual(result["matches"], 0)
+
     def test_capability_detects_javascript_network_import(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
@@ -392,6 +404,16 @@ class SourcePathTests(unittest.TestCase):
             root = Path(folder)
             (root / "main.js").write_text(
                 'const label = `require("fake-template")`;\n',
+                encoding="utf-8",
+            )
+            result = Questioner(root, {}).ask("what are the dependencies?")
+            self.assertEqual(result["dependencies"], [])
+
+    def test_dependencies_ignore_javascript_regex_text(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.js").write_text(
+                'const pattern = /import("fake-package")/;\n',
                 encoding="utf-8",
             )
             result = Questioner(root, {}).ask("what are the dependencies?")

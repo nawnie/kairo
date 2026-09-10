@@ -136,6 +136,7 @@ def _text_source_summary(path: Path):
     source = path.read_text(encoding="utf-8", errors="replace")
     without_comments = _strip_c_style_comments(source)
     code = re.sub(r"(['\"`])(?:\\.|(?!\1).)*\1", "", without_comments)
+    code = re.sub(r"/(?:\\.|[^/\\\r\n])+/[A-Za-z]*", "", code)
     items = []
     imports = []
     if re.search(r"\bimport\b", code):
@@ -505,6 +506,7 @@ def _text_capability_evidence(path, terms):
             continue
         lowered_line = line.lower()
         code = re.sub(r"(['\"`])(?:\\.|(?!\1).)*\1", "", lowered_line)
+        code = re.sub(r"/(?:\\.|[^/\\\r\n])+/[A-Za-z]*", "", code)
         require_call = re.search(r"\brequire\s*\(", code)
         for term in terms:
             escaped = re.escape(term.lower())
