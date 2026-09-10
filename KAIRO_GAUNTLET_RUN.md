@@ -124,3 +124,8 @@ The cross-language scanner then received a quote-aware comment masker. The old
 regex could treat `//` inside a URL string as a comment or treat inline-comment
 text as code. Regression coverage now preserves real imports after URL strings
 and ignores fake `require("socket")` text in inline comments.
+
+The routing audit found one remaining lexical mismatch: template literals were
+recognized by comment masking but not by later string removal. Template text
+containing fake `require(...)` evidence is now excluded from both capability and
+dependency scans.
