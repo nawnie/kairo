@@ -86,6 +86,15 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["answer"], "yes")
             self.assertGreater(result["matches"], 0)
 
+    def test_program_summary_reads_mixed_language_structure(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "index.ts").write_text("import express from 'express';\nexport function startServer() { return express(); }\n", encoding="utf-8")
+            result = summarize_path(root)
+            evidence = " ".join(item["text"] for item in result["evidence"])
+            self.assertIn("express", evidence)
+            self.assertIn("startServer", evidence)
+
 
 if __name__ == "__main__":
     unittest.main()

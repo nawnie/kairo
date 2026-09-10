@@ -5,6 +5,7 @@ import ast
 from dataclasses import dataclass
 import json
 from pathlib import Path
+import re
 import tomllib
 
 
@@ -67,6 +68,18 @@ def _python_summary(path: Path):
     return items, ast.get_docstring(tree, clean=True)
 
 
+def _text_source_summary(path: Path):
+    source = path.read_text(encoding="utf-8", errors="replace")
+    items = []
+    imports = sorted(set(re.findall(r"(?:import|require\s*\()\s*[\"']?([A-Za-z0-9_./@-]+)", source)))
+    functions = sorted(set(re.findall(r"(?:function\s+|(?:fn|func|void|int|string|public|private)\s+)([A-Za-z_]\w*)\s*\(", source)))
+    if imports:
+        items.append(SourceEvidence(str(path), 1, "imports: " + ", ".join(imports[:30])))
+    if functions:
+        items.append(SourceEvidence(str(path), 1, "functions: " + ", ".join(functions[:30])))
+    return items
+
+
 def summarize_path(program_path):
     root = Path(program_path).expanduser().resolve()
     if not root.exists():
@@ -96,6 +109,9 @@ def summarize_path(program_path):
                 descriptions.append(docstring.splitlines()[0])
             if path.name in {"main.py", "__main__.py", "cli.py"}:
                 entrypoints.append(str(path))
+        elif path.suffix.lower() in {".js", ".jsx", ".ts", ".tsx", ".go", ".rs", ".java", ".cs", ".cpp", ".c", ".h"}:
+            items = _text_source_summary(path)
+            evidence.extend(items)
         elif path.name == "pyproject.toml":
             try:
                 config = tomllib.loads(path.read_text(encoding="utf-8", errors="replace"))
