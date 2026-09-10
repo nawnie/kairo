@@ -9,6 +9,21 @@ structure, and abstain when the available evidence is not enough. The project
 is intentionally research-oriented: a successful bounded experiment is not a
 claim of general intelligence.
 
+## Architecture comparison
+
+A source-backed comparison of Kairo, typical generative LLMs, and physical
+reservoir computing is available here:
+
+[**Kairo vs. LLMs vs. Physical Reservoir Computing**](docs/KAIRO_COMPARISON.md)
+
+![Fact-checked Kairo architecture comparison](docs/kairo-vs-llms-vs-physical-reservoir-computing.svg)
+
+The short version: Kairo shares some useful *methodological* ideas with
+reservoir-computing research, especially probing and observing system state,
+but it is not currently a reservoir computer. A Kairo + physical-reservoir
+implementation would be a new hybrid research branch, not simply a hardware
+port of the current software.
+
 ## Try it
 
 The interactive entry point accepts a program directory or adapter path once,
