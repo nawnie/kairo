@@ -1,0 +1,157 @@
+"""Deterministic, evidence-first source summary for a supplied program path."""
+from __future__ import annotations
+
+import ast
+from dataclasses import dataclass
+from pathlib import Path
+
+
+@dataclass(frozen=True)
+class SourceEvidence:
+    path: str
+    line: int
+    text: str
+
+    def as_dict(self):
+        return {"path": self.path, "line": self.line, "text": self.text}
+
+
+def _files(root: Path):
+    if root.is_file():
+        return [root]
+    return sorted(p for p in root.rglob("*") if p.is_file() and ".git" not in p.parts and "__pycache__" not in p.parts)
+
+
+def _python_summary(path: Path):
+    source = path.read_text(encoding="utf-8", errors="replace")
+    try:
+        tree = ast.parse(source, filename=str(path))
+    except SyntaxError:
+        return [], None
+    items = []
+    imports = []
+    functions = []
+    classes = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            imports.extend(alias.name for alias in node.names)
+        elif isinstance(node, ast.ImportFrom):
+            imports.append(node.module or "relative import")
+        elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            functions.append(node.name)
+        elif isinstance(node, ast.ClassDef):
+            classes.append(node.name)
+    if imports:
+        items.append(SourceEvidence(str(path), 1, "imports: " + ", ".join(sorted(set(imports)))))
+    if classes:
+        items.append(SourceEvidence(str(path), 1, "classes: " + ", ".join(sorted(set(classes)))))
+    if functions:
+        items.append(SourceEvidence(str(path), 1, "functions: " + ", ".join(sorted(set(functions)))))
+    return items, ast.get_docstring(tree, clean=True)
+
+
+def summarize_path(program_path):
+    root = Path(program_path).expanduser().resolve()
+    if not root.exists():
+        return {"status": "error", "reason": "program_path_not_found", "answer": None, "evidence": []}
+    files = _files(root)
+    evidence = []
+    descriptions = []
+    docs = []
+    for path in files:
+        relative = path.name if root.is_file() else str(path.relative_to(root))
+        if path.suffix.lower() in {".md", ".txt", ".rst"} and path.name.lower() in {"readme.md", "readme.txt", "readme.rst", "description.md"}:
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+            useful = [(index, line.strip()) for index, line in enumerate(lines, 1) if line.strip()][:8]
+            for line, text in useful:
+                docs.append(text)
+                evidence.append(SourceEvidence(str(path), line, text))
+        elif path.suffix.lower() == ".py":
+            items, docstring = _python_summary(path)
+            evidence.extend(items)
+            if docstring:
+                descriptions.append(docstring.splitlines()[0])
+    if not files:
+        return {"status": "abstain", "reason": "no_readable_files", "answer": None, "evidence": []}
+    parts = []
+    if docs:
+        parts.append("Project documentation says: " + " ".join(docs[:3]))
+    if descriptions:
+        parts.append("Python module descriptions: " + " ".join(descriptions[:5]))
+    python_count = sum(path.suffix.lower() == ".py" for path in files)
+    if python_count:
+        parts.append(f"The supplied location contains {python_count} Python source file(s) summarized by their imports, classes, and functions.")
+    if not parts:
+        parts.append(f"The supplied location contains {len(files)} readable file(s), but no supported description or Python structure was found.")
+    return {"status": "answered", "answer": " ".join(parts),
+            "scope": "source summary only; runtime behavior requires execution evidence",
+            "evidence": [item.as_dict() for item in evidence[:40]],
+            "files_considered": len(files)}
+
+
+def summarize_function(program_path, function_name):
+    root = Path(program_path).expanduser().resolve()
+    if not root.exists():
+        return {"status": "error", "reason": "program_path_not_found", "answer": None, "evidence": []}
+    matches = []
+    for path in _files(root):
+        if path.suffix.lower() != ".py":
+            continue
+        source = path.read_text(encoding="utf-8", errors="replace")
+        try:
+            tree = ast.parse(source, filename=str(path))
+        except SyntaxError:
+            continue
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == function_name:
+                doc = ast.get_docstring(node, clean=True)
+                calls = sorted({call.func.id for call in ast.walk(node)
+                                if isinstance(call, ast.Call) and isinstance(call.func, ast.Name)})
+                returns = [ast.get_source_segment(source, item.value) for item in ast.walk(node)
+                           if isinstance(item, ast.Return) and item.value is not None]
+                evidence = [SourceEvidence(str(path), node.lineno, f"def {node.name}(...)")]
+                if doc:
+                    evidence.append(SourceEvidence(str(path), node.lineno, doc.splitlines()[0]))
+                answer = f"{function_name} is defined in {path.name}."
+                if doc:
+                    answer += f" Documentation: {doc.splitlines()[0]}"
+                if calls:
+                    answer += f" It directly calls: {', '.join(calls)}."
+                if returns:
+                    answer += f" It has return expression(s): {', '.join(returns[:5])}."
+                else:
+                    answer += " No explicit return expression was found in the source."
+                matches.append({"status": "answered", "answer": answer,
+                                "scope": "static source summary only; runtime behavior requires execution evidence",
+                                "evidence": [item.as_dict() for item in evidence]})
+    if len(matches) == 1:
+        return matches[0]
+    if len(matches) > 1:
+        return {"status": "abstain", "reason": "function_name_is_ambiguous", "answer": None,
+                "evidence": [item for match in matches for item in match["evidence"]]}
+    return {"status": "abstain", "reason": "function_not_found", "answer": None, "evidence": []}
+
+
+def find_symbol(program_path, symbol):
+    root = Path(program_path).expanduser().resolve()
+    matches = []
+    for path in _files(root):
+        if path.suffix.lower() != ".py":
+            continue
+        source = path.read_text(encoding="utf-8", errors="replace")
+        try:
+            tree = ast.parse(source, filename=str(path))
+        except SyntaxError:
+            continue
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and node.name == symbol:
+                kind = "function" if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) else "class"
+                matches.append(SourceEvidence(str(path), node.lineno, f"{kind} {symbol}"))
+    if len(matches) == 1:
+        item = matches[0]
+        return {"status": "answered", "answer": f"{symbol} is defined at {item.path}:{item.line}.",
+                "evidence": [item.as_dict()]}
+    if len(matches) > 1:
+        return {"status": "abstain", "reason": "symbol_name_is_ambiguous", "answer": None,
+                "evidence": [item.as_dict() for item in matches]}
+    return {"status": "abstain", "reason": "symbol_not_found", "answer": None, "evidence": []}
