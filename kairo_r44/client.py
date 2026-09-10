@@ -12,6 +12,28 @@ from kairo_r23.challenges import edits, proposals
 from .backprop import TraceHead
 
 
+def coverage_candidates(access_words, alphabet, cap, budget):
+    """Select long, diverse continuations from observed access words only."""
+    observed_pairs = {tuple(word[index:index + 2]) for word in access_words for index in range(len(word) - 1)}
+    pool = {}
+    prefixes = sorted((list(word) for word in access_words), key=lambda word: (-len(word), word))
+    def extend(prefix, suffix):
+        value = tuple(prefix + list(suffix))
+        if len(value) <= budget and value not in pool: pool[value] = {"word": list(value), "kind": "coverage_frontier", "prefix": prefix, "suffix_length": len(suffix)}
+    for prefix in prefixes:
+        # Length three is the first practical suffix that can expose a delayed
+        # distinction; two and four provide matched diversity around it.
+        for suffix_length in (3, 2, 4):
+            frontier = [()]
+            for _ in range(suffix_length): frontier = [prefix_value + (action,) for prefix_value in frontier for action in alphabet]
+            for suffix in frontier: extend(prefix, suffix)
+    selected = []; covered = set()
+    while pool and len(selected) < cap:
+        choice = max(pool, key=lambda key: (len(set(zip(key, key[1:])) - observed_pairs - covered), len(key), tuple(key)))
+        selected.append(pool.pop(choice)); covered.update(zip(choice, choice[1:]))
+    return selected
+
+
 def run(boot, call):
     protocol = boot["protocol"]; observations = []; observation_cap = 512; observations_seen = 0; reservoir_state = 44017 + boot["ordinal"]
 
@@ -46,8 +68,11 @@ def run(boot, call):
     training_losses = head.fit(observations, epochs=8) if observations else []
     if base["status"] == "success" and artifact and artifact["model"]:
         model = Model.from_dict(artifact["model"])
-        candidate_policy = "frontier_challenges" if boot["policy"] == "frontier_backprop" else "plan_challenges"
-        generated = proposals(word, boot["alphabet"], candidate_policy, protocol["challenge_seed"] + boot["ordinal"], protocol["challenge_queries"], protocol["action_budget"], artifact.get("access_words"))
+        if boot["policy"] == "coverage_backprop":
+            generated = coverage_candidates(artifact.get("access_words", []), boot["alphabet"], protocol["challenge_queries"], protocol["action_budget"])
+        else:
+            candidate_policy = "frontier_challenges" if boot["policy"] == "frontier_backprop" else "plan_challenges"
+            generated = proposals(word, boot["alphabet"], candidate_policy, protocol["challenge_seed"] + boot["ordinal"], protocol["challenge_queries"], protocol["action_budget"], artifact.get("access_words"))
         ranked = []
         for proposal in generated:
             scored = dict(proposal); scored["backprop_uncertainty"] = head.challenge_score(proposal["word"])
