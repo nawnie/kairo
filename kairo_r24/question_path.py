@@ -12,7 +12,7 @@ from pathlib import Path
 from .path_learn import learn_path
 from .path_program import PathProgram
 from kairo_r11.model import Model
-from .source_path import capability, find_symbol, find_text, summarize_function, summarize_path
+from .source_path import capability, dependencies, entrypoints, find_symbol, find_text, summarize_function, summarize_path
 
 
 def _plan(question, alphabet):
@@ -88,6 +88,8 @@ class Questioner:
             return capability(self.program_path, {"file": "file", "database": "database", "network": "network", "processe": "process"}.get(name, name))
         if re.search(r"\bwhat does (this )?(program|project|code) do\b", question.lower()):
             return summarize_path(self.program_path)
+        if re.search(r"\bwhat (are|is) (the )?(dependencies|entry point|entrypoint)\b", question, re.IGNORECASE):
+            return entrypoints(self.program_path) if re.search(r"entry ?point", question, re.IGNORECASE) else dependencies(self.program_path)
         plan = _plan(question, self.alphabet)
         program_path = self.program_path
         alphabet = self.alphabet

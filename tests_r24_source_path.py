@@ -86,6 +86,16 @@ class SourcePathTests(unittest.TestCase):
             self.assertEqual(result["answer"], "yes")
             self.assertGreater(result["matches"], 0)
 
+    def test_questioner_answers_dependencies_and_entrypoint(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "main.py").write_text("import sqlite3\n\ndef run():\n    return sqlite3.connect(':memory:')\n", encoding="utf-8")
+            questioner = Questioner(root, {})
+            dependencies_result = questioner.ask("what are the dependencies?")
+            entrypoint_result = questioner.ask("what is the entry point?")
+            self.assertIn("sqlite3", dependencies_result["answer"])
+            self.assertIn("main.py", entrypoint_result["answer"])
+
     def test_program_summary_reads_mixed_language_structure(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

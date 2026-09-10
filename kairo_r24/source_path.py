@@ -272,3 +272,37 @@ def capability(program_path, name):
     return {"status": "answered", "answer": answer,
             "scope": "static source indicators only; does not prove runtime activity",
             "evidence": [item.as_dict() for item in matches[:40]], "matches": len(matches)}
+
+
+def dependencies(program_path):
+    root = Path(program_path).expanduser().resolve()
+    found = []
+    evidence = []
+    for path in _files(root):
+        if path.suffix.lower() == ".py":
+            items, _ = _python_summary(path)
+        elif path.suffix.lower() in {".js", ".jsx", ".ts", ".tsx", ".go", ".rs", ".java", ".cs", ".cpp", ".c", ".h"}:
+            items = _text_source_summary(path)
+        else:
+            items = []
+        for item in items:
+            if item.text.startswith("imports:"):
+                found.extend(item.text.split(":", 1)[1].split(", "))
+                evidence.append(item)
+    unique = sorted(set(item.strip() for item in found if item.strip()))
+    return {"status": "answered", "answer": ", ".join(unique) if unique else "No imports were identified.",
+            "evidence": [item.as_dict() for item in evidence[:40]], "dependencies": unique}
+
+
+def entrypoints(program_path):
+    root = Path(program_path).expanduser().resolve()
+    found = []
+    evidence = []
+    for path in _files(root):
+        if path.name in {"main.py", "__main__.py", "cli.py", "index.js", "index.ts", "main.go", "Program.cs"}:
+            found.append(str(path))
+            evidence.append(SourceEvidence(str(path), 1, "conventional entry-point filename"))
+    if not found:
+        return {"status": "abstain", "reason": "no_conventional_entrypoint_found", "answer": None, "evidence": []}
+    return {"status": "answered", "answer": "Likely entry point(s): " + ", ".join(found),
+            "evidence": [item.as_dict() for item in evidence]}
