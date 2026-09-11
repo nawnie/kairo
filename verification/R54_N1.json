@@ -1,0 +1,17 @@
+{
+  "experiment": "R54-N1-binding-invariant",
+  "date": "2026-09-11",
+  "donor_count": 6,
+  "heldout_count": 5,
+  "network": {"input_features": 10, "hidden_units": 8, "output_labels": 3},
+  "epochs": 8,
+  "structured_accuracy": 1.0,
+  "raw_accuracy": 0.6,
+  "random_accuracy_mean": 0.384,
+  "elapsed_seconds": 0.0034494,
+  "evaluator_truth_in_training": false,
+  "proposal_only": true,
+  "representation_gate_passed": true,
+  "kairo_promotion": false,
+  "goal_achieved": false
+}
