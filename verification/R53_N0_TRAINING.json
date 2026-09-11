@@ -1,0 +1,19 @@
+{
+  "experiment": "R53-N0-supervised-training",
+  "date": "2026-09-11",
+  "train_count": 8,
+  "heldout_count": 4,
+  "input_features": 9,
+  "hidden_units": 8,
+  "output_labels": 2,
+  "epochs": 8,
+  "observation_cap": 512,
+  "initial_loss": 0.7394638546894592,
+  "final_loss": 0.6958064753989924,
+  "heldout_accuracy": 0.0,
+  "elapsed_seconds": 0.001716300001135096,
+  "proposal_only": true,
+  "evaluator_fields_in_learner": false,
+  "promoted": false,
+  "goal_achieved": false
+}
