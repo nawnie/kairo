@@ -71,6 +71,8 @@ def run(boot, call):
         model = Model.from_dict(artifact["model"])
         if boot["policy"] == "coverage_backprop":
             generated = coverage_candidates(artifact.get("access_words", []), boot["alphabet"], protocol["challenge_queries"], protocol["action_budget"])
+        elif boot["policy"] == "earlystop_random_challenges":
+            generated = proposals(word, boot["alphabet"], "random_challenges", protocol["challenge_seed"] + boot["ordinal"], protocol["challenge_queries"], protocol["action_budget"], artifact.get("access_words"))
         else:
             candidate_policy = "frontier_challenges" if boot["policy"] == "frontier_backprop" else "plan_challenges"
             generated = proposals(word, boot["alphabet"], candidate_policy, protocol["challenge_seed"] + boot["ordinal"], protocol["challenge_queries"], protocol["action_budget"], artifact.get("access_words"))
@@ -84,6 +86,8 @@ def run(boot, call):
             mismatch = observed != predicted
             checks.append({**proposal, "observed": observed, "predicted": predicted, "mismatch": mismatch})
             if mismatch: mismatches.append(value)
+            if boot["policy"].startswith("earlystop_") and mismatch:
+                break
         model_status = "not_refuted_by_backprop_ranked_challenges" if generated else model_status
         if mismatches:
             model_status = "refuted_repair_failed"

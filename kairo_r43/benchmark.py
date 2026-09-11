@@ -59,7 +59,7 @@ def run(root, out, policy, data_dir="datasets/r43"):
                 if request["op"] == "task_checkpoint": checkpoint_hash.append(host.actual.disk_hash())
                 return response
             host.handle = handle
-            entry = "kairo_r22.file_client" if policy == "cold" else ("kairo_r44.client" if policy in ("backprop_challenges", "structured_backprop_challenges", "frontier_backprop", "coverage_backprop") else "kairo_r23.client")
+            entry = "kairo_r22.file_client" if policy == "cold" else ("kairo_r44.client" if policy in ("backprop_challenges", "structured_backprop_challenges", "earlystop_random_challenges", "earlystop_backprop_challenges", "earlystop_structured_backprop_challenges", "frontier_backprop", "coverage_backprop") else "kairo_r23.client")
             result = child(root, dest, boot, host, entry)
             assert result["queries"] == host.queries and result["input_symbols"] == host.symbols and not host.acquiring
             if checkpoint_hash: assert checkpoint_hash == [host.actual.disk_hash()]

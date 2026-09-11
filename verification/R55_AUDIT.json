@@ -1,0 +1,100 @@
+{
+  "experiment": "R55",
+  "tasks": [
+    {
+      "policy": "earlystop_random_challenges",
+      "case": "D1",
+      "queries": 602,
+      "challenge_queries": 13,
+      "artifact": true,
+      "exact": false,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "earlystop_random_challenges",
+      "case": "D2",
+      "queries": 602,
+      "challenge_queries": 13,
+      "artifact": true,
+      "exact": false,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "earlystop_random_challenges",
+      "case": "D3",
+      "queries": 602,
+      "challenge_queries": 13,
+      "artifact": true,
+      "exact": false,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "earlystop_backprop_challenges",
+      "case": "D1",
+      "queries": 602,
+      "challenge_queries": 13,
+      "artifact": true,
+      "exact": false,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "earlystop_backprop_challenges",
+      "case": "D2",
+      "queries": 602,
+      "challenge_queries": 13,
+      "artifact": true,
+      "exact": false,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "earlystop_backprop_challenges",
+      "case": "D3",
+      "queries": 602,
+      "challenge_queries": 13,
+      "artifact": true,
+      "exact": false,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "earlystop_structured_backprop_challenges",
+      "case": "D1",
+      "queries": 602,
+      "challenge_queries": 13,
+      "artifact": true,
+      "exact": false,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "earlystop_structured_backprop_challenges",
+      "case": "D2",
+      "queries": 602,
+      "challenge_queries": 13,
+      "artifact": true,
+      "exact": false,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "earlystop_structured_backprop_challenges",
+      "case": "D3",
+      "queries": 602,
+      "challenge_queries": 13,
+      "artifact": true,
+      "exact": false,
+      "replay": true,
+      "target_states": 11
+    }
+  ],
+  "task_count": 9,
+  "artifacts": 9,
+  "exact": 0,
+  "replays": 9,
+  "goal_achieved": false
+}

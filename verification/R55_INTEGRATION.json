@@ -1,0 +1,13 @@
+{
+  "experiment": "R55-early-stop",
+  "date": "2026-09-11",
+  "candidate_pool_per_task": 13,
+  "lanes": {
+    "earlystop_random_challenges": {"artifacts": 3, "exact": 0, "replays": 3, "queries": 1806, "mismatches": 0},
+    "earlystop_backprop_challenges": {"artifacts": 3, "exact": 0, "replays": 3, "queries": 1806, "mismatches": 0},
+    "earlystop_structured_backprop_challenges": {"artifacts": 3, "exact": 0, "replays": 3, "queries": 1806, "mismatches": 0}
+  },
+  "invalid_first_attempt_excluded": true,
+  "integration_delta": "neutral",
+  "goal_achieved": false
+}
