@@ -1,0 +1,17 @@
+{
+  "experiment": "R51-R0",
+  "date": "2026-09-11",
+  "cases": 15,
+  "regimes": ["delayed", "parity", "reversal"],
+  "seeds": [11, 17, 23, 29, 31],
+  "controls": {
+    "base": "width=1 linear readout",
+    "fixed_window": "width=3 nonlinear readout",
+    "r0": "width=8 nonlinear readout"
+  },
+  "r0_wins_fixed_window": 12,
+  "r0_matches_or_beats_base": 13,
+  "reload_exact": true,
+  "goal_achieved": false,
+  "note": "Positive isolated synthetic temporal result; no Kairo integration or program-understanding claim."
+}

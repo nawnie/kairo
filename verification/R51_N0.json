@@ -1,0 +1,12 @@
+{
+  "experiment": "R51-N0",
+  "date": "2026-09-11",
+  "candidate_count": 80,
+  "runs": 5,
+  "random_repeats_per_run": 25,
+  "neural_ranks": [17, 23, 26, 2, 67],
+  "neural_beats_random_mean_runs": 4,
+  "promoted": false,
+  "goal_achieved": false,
+  "note": "Training and occasional ranking benefit observed; instability prevents a useful-transfer claim."
+}
