@@ -14,7 +14,7 @@ def child(root,out,boot,host,entry):
         'kairo_r18':['__init__.py','feedback.py'],'kairo_r19':['__init__.py','client.py'],
         'kairo_r20':['__init__.py','client.py'],'kairo_r21':['__init__.py','client.py','evidence.py'],
         'kairo_r22':['__init__.py','evidence.py','memory_client.py','file_client.py'],'kairo_r23':['__init__.py','client.py','challenges.py'],
-        'kairo_r44':['__init__.py','backprop.py','client.py']}
+        'kairo_r44':['__init__.py','backprop.py','structured.py','client.py']}
     result=None;out.mkdir(parents=True,exist_ok=False)
     with tempfile.TemporaryDirectory(prefix='kairo_r23_agent_') as directory:
         working=Path(directory);copied=[]

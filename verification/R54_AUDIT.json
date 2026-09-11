@@ -1,0 +1,100 @@
+{
+  "experiment": "R54",
+  "tasks": [
+    {
+      "policy": "random_challenges",
+      "case": "D1",
+      "status": "success",
+      "queries": 2662,
+      "artifact": true,
+      "exact": true,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "random_challenges",
+      "case": "D2",
+      "status": "success",
+      "queries": 2633,
+      "artifact": true,
+      "exact": true,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "random_challenges",
+      "case": "D3",
+      "status": "success",
+      "queries": 2639,
+      "artifact": true,
+      "exact": true,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "backprop_challenges",
+      "case": "D1",
+      "status": "success",
+      "queries": 2662,
+      "artifact": true,
+      "exact": true,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "backprop_challenges",
+      "case": "D2",
+      "status": "success",
+      "queries": 2633,
+      "artifact": true,
+      "exact": true,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "backprop_challenges",
+      "case": "D3",
+      "status": "success",
+      "queries": 2639,
+      "artifact": true,
+      "exact": true,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "structured_backprop_challenges",
+      "case": "D1",
+      "status": "success",
+      "queries": 2662,
+      "artifact": true,
+      "exact": true,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "structured_backprop_challenges",
+      "case": "D2",
+      "status": "success",
+      "queries": 2633,
+      "artifact": true,
+      "exact": true,
+      "replay": true,
+      "target_states": 11
+    },
+    {
+      "policy": "structured_backprop_challenges",
+      "case": "D3",
+      "status": "success",
+      "queries": 2639,
+      "artifact": true,
+      "exact": true,
+      "replay": true,
+      "target_states": 11
+    }
+  ],
+  "task_count": 9,
+  "artifacts": 9,
+  "exact": 9,
+  "replays": 9,
+  "goal_achieved": false
+}

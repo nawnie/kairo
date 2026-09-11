@@ -10,6 +10,7 @@ from kairo_r19.client import satisfies
 from kairo_r22.file_client import run as task_run
 from kairo_r23.challenges import edits, proposals
 from .backprop import TraceHead
+from .structured import PatternHead
 
 
 def coverage_candidates(access_words, alphabet, cap, budget):
@@ -64,7 +65,7 @@ def run(boot, call):
         result = call({"op": "query", "word": list(value), "purpose": purpose})["outputs"]
         queries += 1; symbols += len(value); return result
 
-    head = TraceHead(boot["alphabet"], seed=4401 + boot["ordinal"])
+    head = PatternHead(history=6, hidden_size=max(2, min(32, 2 * len(boot["alphabet"]))), seed=4401 + boot["ordinal"]) if boot["policy"] == "structured_backprop_challenges" else TraceHead(boot["alphabet"], seed=4401 + boot["ordinal"])
     training_losses = head.fit(observations, epochs=8) if observations else []
     if base["status"] == "success" and artifact and artifact["model"]:
         model = Model.from_dict(artifact["model"])

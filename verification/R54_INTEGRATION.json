@@ -1,0 +1,15 @@
+{
+  "experiment": "R54-real-Kairo-integration",
+  "date": "2026-09-11",
+  "cases": 3,
+  "lanes": {
+    "random_challenges": {"successes": 3, "exact": 3, "replays": 3, "queries": 7934},
+    "backprop_challenges": {"successes": 3, "exact": 3, "replays": 3, "queries": 7934},
+    "structured_backprop_challenges": {"successes": 3, "exact": 3, "replays": 3, "queries": 7934}
+  },
+  "independent_audit": {"artifacts": 9, "exact": 9, "replays": 9},
+  "integration_delta": "neutral",
+  "kairo_promotion": false,
+  "weights_tested": false,
+  "goal_achieved": false
+}
