@@ -1,0 +1,765 @@
+{
+  "experiment": "R60-R0-weight-sweep",
+  "rows": [
+    {
+      "config": "delayed_3",
+      "seed": 11,
+      "weight": 0.0,
+      "mae": 0.002767667809060764
+    },
+    {
+      "config": "delayed_3",
+      "seed": 11,
+      "weight": 0.25,
+      "mae": 0.002748038760969231
+    },
+    {
+      "config": "delayed_3",
+      "seed": 11,
+      "weight": 0.5,
+      "mae": 0.002820763765006071
+    },
+    {
+      "config": "delayed_3",
+      "seed": 11,
+      "weight": 0.75,
+      "mae": 0.0030251360170573632
+    },
+    {
+      "config": "delayed_3",
+      "seed": 11,
+      "weight": 1.0,
+      "mae": 0.0033897875703934985
+    },
+    {
+      "config": "delayed_3",
+      "seed": 17,
+      "weight": 0.0,
+      "mae": 0.003255881735304676
+    },
+    {
+      "config": "delayed_3",
+      "seed": 17,
+      "weight": 0.25,
+      "mae": 0.0033820586754722483
+    },
+    {
+      "config": "delayed_3",
+      "seed": 17,
+      "weight": 0.5,
+      "mae": 0.003577594506497099
+    },
+    {
+      "config": "delayed_3",
+      "seed": 17,
+      "weight": 0.75,
+      "mae": 0.0038534956217190753
+    },
+    {
+      "config": "delayed_3",
+      "seed": 17,
+      "weight": 1.0,
+      "mae": 0.004411329856434684
+    },
+    {
+      "config": "delayed_3",
+      "seed": 23,
+      "weight": 0.0,
+      "mae": 0.003322872493690544
+    },
+    {
+      "config": "delayed_3",
+      "seed": 23,
+      "weight": 0.25,
+      "mae": 0.003909825434476495
+    },
+    {
+      "config": "delayed_3",
+      "seed": 23,
+      "weight": 0.5,
+      "mae": 0.004496779980172403
+    },
+    {
+      "config": "delayed_3",
+      "seed": 23,
+      "weight": 0.75,
+      "mae": 0.005142069390414961
+    },
+    {
+      "config": "delayed_3",
+      "seed": 23,
+      "weight": 1.0,
+      "mae": 0.0058151650217794166
+    },
+    {
+      "config": "delayed_3",
+      "seed": 29,
+      "weight": 0.0,
+      "mae": 0.0034230593747359
+    },
+    {
+      "config": "delayed_3",
+      "seed": 29,
+      "weight": 0.25,
+      "mae": 0.0035855171624178915
+    },
+    {
+      "config": "delayed_3",
+      "seed": 29,
+      "weight": 0.5,
+      "mae": 0.003747977042365195
+    },
+    {
+      "config": "delayed_3",
+      "seed": 29,
+      "weight": 0.75,
+      "mae": 0.00393794456018192
+    },
+    {
+      "config": "delayed_3",
+      "seed": 29,
+      "weight": 1.0,
+      "mae": 0.004291243616622979
+    },
+    {
+      "config": "delayed_3",
+      "seed": 31,
+      "weight": 0.0,
+      "mae": 0.003223687380827316
+    },
+    {
+      "config": "delayed_3",
+      "seed": 31,
+      "weight": 0.25,
+      "mae": 0.003500182403350964
+    },
+    {
+      "config": "delayed_3",
+      "seed": 31,
+      "weight": 0.5,
+      "mae": 0.003776679396254212
+    },
+    {
+      "config": "delayed_3",
+      "seed": 31,
+      "weight": 0.75,
+      "mae": 0.0040828048028605434
+    },
+    {
+      "config": "delayed_3",
+      "seed": 31,
+      "weight": 1.0,
+      "mae": 0.004623872451612089
+    },
+    {
+      "config": "delayed_7",
+      "seed": 11,
+      "weight": 0.0,
+      "mae": 0.2736474362326642
+    },
+    {
+      "config": "delayed_7",
+      "seed": 11,
+      "weight": 0.25,
+      "mae": 0.20683219679426657
+    },
+    {
+      "config": "delayed_7",
+      "seed": 11,
+      "weight": 0.5,
+      "mae": 0.14001695735586892
+    },
+    {
+      "config": "delayed_7",
+      "seed": 11,
+      "weight": 0.75,
+      "mae": 0.0732017179174713
+    },
+    {
+      "config": "delayed_7",
+      "seed": 11,
+      "weight": 1.0,
+      "mae": 0.010148390686025301
+    },
+    {
+      "config": "delayed_7",
+      "seed": 17,
+      "weight": 0.0,
+      "mae": 0.23442087522071708
+    },
+    {
+      "config": "delayed_7",
+      "seed": 17,
+      "weight": 0.25,
+      "mae": 0.17846706299596338
+    },
+    {
+      "config": "delayed_7",
+      "seed": 17,
+      "weight": 0.5,
+      "mae": 0.12256019617055793
+    },
+    {
+      "config": "delayed_7",
+      "seed": 17,
+      "weight": 0.75,
+      "mae": 0.06672198031211811
+    },
+    {
+      "config": "delayed_7",
+      "seed": 17,
+      "weight": 1.0,
+      "mae": 0.013233986333930423
+    },
+    {
+      "config": "delayed_7",
+      "seed": 23,
+      "weight": 0.0,
+      "mae": 0.24151324727326978
+    },
+    {
+      "config": "delayed_7",
+      "seed": 23,
+      "weight": 0.25,
+      "mae": 0.1842073865494526
+    },
+    {
+      "config": "delayed_7",
+      "seed": 23,
+      "weight": 0.5,
+      "mae": 0.12690152603235183
+    },
+    {
+      "config": "delayed_7",
+      "seed": 23,
+      "weight": 0.75,
+      "mae": 0.0697657838417743
+    },
+    {
+      "config": "delayed_7",
+      "seed": 23,
+      "weight": 1.0,
+      "mae": 0.013875062750233813
+    },
+    {
+      "config": "delayed_7",
+      "seed": 29,
+      "weight": 0.0,
+      "mae": 0.2364528198042457
+    },
+    {
+      "config": "delayed_7",
+      "seed": 29,
+      "weight": 0.25,
+      "mae": 0.17999354055136108
+    },
+    {
+      "config": "delayed_7",
+      "seed": 29,
+      "weight": 0.5,
+      "mae": 0.1235342618739102
+    },
+    {
+      "config": "delayed_7",
+      "seed": 29,
+      "weight": 0.75,
+      "mae": 0.06707498319645934
+    },
+    {
+      "config": "delayed_7",
+      "seed": 29,
+      "weight": 1.0,
+      "mae": 0.012873729374073535
+    },
+    {
+      "config": "delayed_7",
+      "seed": 31,
+      "weight": 0.0,
+      "mae": 0.25367546977793626
+    },
+    {
+      "config": "delayed_7",
+      "seed": 31,
+      "weight": 0.25,
+      "mae": 0.19257569826926343
+    },
+    {
+      "config": "delayed_7",
+      "seed": 31,
+      "weight": 0.5,
+      "mae": 0.13147592840628333
+    },
+    {
+      "config": "delayed_7",
+      "seed": 31,
+      "weight": 0.75,
+      "mae": 0.07037615854330319
+    },
+    {
+      "config": "delayed_7",
+      "seed": 31,
+      "weight": 1.0,
+      "mae": 0.013186403268694814
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 11,
+      "weight": 0.0,
+      "mae": 0.49776784113988554
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 11,
+      "weight": 0.25,
+      "mae": 0.3747911564839137
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 11,
+      "weight": 0.5,
+      "mae": 0.2518144718279418
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 11,
+      "weight": 0.75,
+      "mae": 0.12883778717197
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 11,
+      "weight": 1.0,
+      "mae": 0.013820229711258158
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 17,
+      "weight": 0.0,
+      "mae": 0.49721893079515966
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 17,
+      "weight": 0.25,
+      "mae": 0.37392295145739524
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 17,
+      "weight": 0.5,
+      "mae": 0.2506269721196308
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 17,
+      "weight": 0.75,
+      "mae": 0.1273309927818664
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 17,
+      "weight": 1.0,
+      "mae": 0.020457036441434595
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 23,
+      "weight": 0.0,
+      "mae": 0.4995139414073539
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 23,
+      "weight": 0.25,
+      "mae": 0.37601813821828217
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 23,
+      "weight": 0.5,
+      "mae": 0.25252233502921045
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 23,
+      "weight": 0.75,
+      "mae": 0.12902653184013876
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 23,
+      "weight": 1.0,
+      "mae": 0.015845118440573992
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 29,
+      "weight": 0.0,
+      "mae": 0.5023791419255123
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 29,
+      "weight": 0.25,
+      "mae": 0.3784472534587206
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 29,
+      "weight": 0.5,
+      "mae": 0.25451536499192895
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 29,
+      "weight": 0.75,
+      "mae": 0.13058347652513738
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 29,
+      "weight": 1.0,
+      "mae": 0.019229241147458265
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 31,
+      "weight": 0.0,
+      "mae": 0.5030805146498943
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 31,
+      "weight": 0.25,
+      "mae": 0.3786869785705035
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 31,
+      "weight": 0.5,
+      "mae": 0.25429344249111263
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 31,
+      "weight": 0.75,
+      "mae": 0.12989990641172178
+    },
+    {
+      "config": "parity_2_5",
+      "seed": 31,
+      "weight": 1.0,
+      "mae": 0.012662991539087218
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 11,
+      "weight": 0.0,
+      "mae": 0.4955692356809884
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 11,
+      "weight": 0.25,
+      "mae": 0.37385918309446176
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 11,
+      "weight": 0.5,
+      "mae": 0.25214913050793514
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 11,
+      "weight": 0.75,
+      "mae": 0.13043907792140857
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 11,
+      "weight": 1.0,
+      "mae": 0.01812445044943962
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 17,
+      "weight": 0.0,
+      "mae": 0.49607968198794294
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 17,
+      "weight": 0.25,
+      "mae": 0.3734302224823381
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 17,
+      "weight": 0.5,
+      "mae": 0.2507807629767332
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 17,
+      "weight": 0.75,
+      "mae": 0.12813130347112833
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 17,
+      "weight": 1.0,
+      "mae": 0.022209681796908843
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 23,
+      "weight": 0.0,
+      "mae": 0.49843721931166085
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 23,
+      "weight": 0.25,
+      "mae": 0.3759442289627062
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 23,
+      "weight": 0.5,
+      "mae": 0.2534512386137515
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 23,
+      "weight": 0.75,
+      "mae": 0.13095824826479693
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 23,
+      "weight": 1.0,
+      "mae": 0.019151124962577714
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 29,
+      "weight": 0.0,
+      "mae": 0.5000033157904971
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 29,
+      "weight": 0.25,
+      "mae": 0.37739475816588547
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 29,
+      "weight": 0.5,
+      "mae": 0.25478620054127377
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 29,
+      "weight": 0.75,
+      "mae": 0.1321776429166621
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 29,
+      "weight": 1.0,
+      "mae": 0.026808630981955867
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 31,
+      "weight": 0.0,
+      "mae": 0.504215097169229
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 31,
+      "weight": 0.25,
+      "mae": 0.3800018926433004
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 31,
+      "weight": 0.5,
+      "mae": 0.2557886881173719
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 31,
+      "weight": 0.75,
+      "mae": 0.13157548359144333
+    },
+    {
+      "config": "parity_3_7",
+      "seed": 31,
+      "weight": 1.0,
+      "mae": 0.01591058263189902
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 11,
+      "weight": 0.0,
+      "mae": 0.5023271469999075
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 11,
+      "weight": 0.25,
+      "mae": 0.5011712062588556
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 11,
+      "weight": 0.5,
+      "mae": 0.5000152655178035
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 11,
+      "weight": 0.75,
+      "mae": 0.4988593247767515
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 11,
+      "weight": 1.0,
+      "mae": 0.49904381501159456
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 17,
+      "weight": 0.0,
+      "mae": 0.5025959297669538
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 17,
+      "weight": 0.25,
+      "mae": 0.501345783335235
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 17,
+      "weight": 0.5,
+      "mae": 0.5000956369035162
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 17,
+      "weight": 0.75,
+      "mae": 0.4988454904717976
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 17,
+      "weight": 1.0,
+      "mae": 0.49847140612288304
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 23,
+      "weight": 0.0,
+      "mae": 0.5133010611787177
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 23,
+      "weight": 0.25,
+      "mae": 0.5140548079471532
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 23,
+      "weight": 0.5,
+      "mae": 0.5148085547155887
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 23,
+      "weight": 0.75,
+      "mae": 0.5155623014840242
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 23,
+      "weight": 1.0,
+      "mae": 0.5163160482524598
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 29,
+      "weight": 0.0,
+      "mae": 0.49980718800631285
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 29,
+      "weight": 0.25,
+      "mae": 0.5011265488873955
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 29,
+      "weight": 0.5,
+      "mae": 0.5024459097684781
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 29,
+      "weight": 0.75,
+      "mae": 0.5037652706495607
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 29,
+      "weight": 1.0,
+      "mae": 0.5056535427064719
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 31,
+      "weight": 0.0,
+      "mae": 0.5019272270661276
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 31,
+      "weight": 0.25,
+      "mae": 0.5019321151708702
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 31,
+      "weight": 0.5,
+      "mae": 0.5019370032756129
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 31,
+      "weight": 0.75,
+      "mae": 0.5019418913803556
+    },
+    {
+      "config": "reversal_mid",
+      "seed": 31,
+      "weight": 1.0,
+      "mae": 0.5019467794850982
+    }
+  ],
+  "case_count": 125,
+  "mean_mae_by_weight": {
+    "0.0": 0.3507970595991438,
+    "0.25": 0.2896531493093604,
+    "0.5": 0.22851758567708627,
+    "0.75": 0.16740467215448493,
+    "1.0": 0.11165998602443605
+  },
+  "best_weight": 1.0,
+  "goal_achieved": false
+}
