@@ -1,0 +1,87 @@
+{
+  "experiment": "R62-R0-offline-context",
+  "goal_achieved": false,
+  "rows": [
+    {
+      "actual_challenges": 2,
+      "actual_rank": 2,
+      "candidate_count": 8,
+      "case": "D1",
+      "mismatch_count": 1,
+      "policy": "targetpool_random",
+      "r0_rank_from_prechallenge_only": 4
+    },
+    {
+      "actual_challenges": 8,
+      "actual_rank": null,
+      "candidate_count": 8,
+      "case": "D2",
+      "mismatch_count": 0,
+      "policy": "targetpool_random",
+      "r0_rank_from_prechallenge_only": null
+    },
+    {
+      "actual_challenges": 8,
+      "actual_rank": null,
+      "candidate_count": 8,
+      "case": "D3",
+      "mismatch_count": 0,
+      "policy": "targetpool_random",
+      "r0_rank_from_prechallenge_only": null
+    },
+    {
+      "actual_challenges": 6,
+      "actual_rank": 6,
+      "candidate_count": 8,
+      "case": "D1",
+      "mismatch_count": 1,
+      "policy": "targetpool_backprop",
+      "r0_rank_from_prechallenge_only": 4
+    },
+    {
+      "actual_challenges": 8,
+      "actual_rank": null,
+      "candidate_count": 8,
+      "case": "D2",
+      "mismatch_count": 0,
+      "policy": "targetpool_backprop",
+      "r0_rank_from_prechallenge_only": null
+    },
+    {
+      "actual_challenges": 8,
+      "actual_rank": null,
+      "candidate_count": 8,
+      "case": "D3",
+      "mismatch_count": 0,
+      "policy": "targetpool_backprop",
+      "r0_rank_from_prechallenge_only": null
+    },
+    {
+      "actual_challenges": 4,
+      "actual_rank": 4,
+      "candidate_count": 8,
+      "case": "D1",
+      "mismatch_count": 1,
+      "policy": "targetpool_structured",
+      "r0_rank_from_prechallenge_only": 4
+    },
+    {
+      "actual_challenges": 8,
+      "actual_rank": null,
+      "candidate_count": 8,
+      "case": "D2",
+      "mismatch_count": 0,
+      "policy": "targetpool_structured",
+      "r0_rank_from_prechallenge_only": null
+    },
+    {
+      "actual_challenges": 8,
+      "actual_rank": null,
+      "candidate_count": 8,
+      "case": "D3",
+      "mismatch_count": 0,
+      "policy": "targetpool_structured",
+      "r0_rank_from_prechallenge_only": null
+    }
+  ]
+}
