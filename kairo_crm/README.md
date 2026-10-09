@@ -64,3 +64,22 @@ product workflows, validations and authorization, never generic AI patches.
 
 No training, model inference, Windows service installation, live CRM data,
 watchers, provider sends or database mutation was performed for v0.1.
+
+## Synthetic command adapter — v0.2
+
+`kairo_crm.sandbox.SandboxCRM` provides a runnable SQLite reference environment
+with synthetic grants, canonical task snapshots, stored proposals and explicit
+approval calls. Run `python -m unittest tests_crm tests_crm_sandbox -v`.
+
+The adapter rechecks permissions, proposal identity, expiry, record versions,
+before values and task field values inside BEGIN IMMEDIATE. It applies selected
+changes, advances each aggregate once, and commits the approval receipt and
+outbox atomically. Exact retries return the stored result; a changed selection
+cannot reuse an already consumed approval. Grants are synthetic fixture setup,
+not production authentication. There is no network or sync worker. Tests inject
+Python exceptions at transaction boundaries and reopen SQLite connections;
+these are not OS kill/power-loss tests or simultaneous load benchmarks.
+
+This sandbox addresses build-order step 5 as a reference implementation only.
+Actual CRM authentication, authorization, domain adapters, model integration
+and deployment remain outstanding.
